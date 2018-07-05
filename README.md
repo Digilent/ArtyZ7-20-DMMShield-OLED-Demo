@@ -1,4 +1,4 @@
-# ArtyZ7-20-DMMShield-OLED-Demoy <!-- Replace this line with the project name -->
+# ArtyZ7-20-DMMShield-OLED-Demo <!-- Replace this line with the project name -->
 DMM Shield OLED demo, implemented on ArtyZ7-20.
 
 Demonstrates the use of DMM Shield library modules (https://github.com/Digilent/ArtyZ7-20-DMMShield-Library).
