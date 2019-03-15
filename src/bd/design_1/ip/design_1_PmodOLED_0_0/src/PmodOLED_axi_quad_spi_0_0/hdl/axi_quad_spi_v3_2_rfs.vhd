@@ -91,8 +91,8 @@ USE ieee.std_logic_1164.ALL;
 --library dist_mem_gen_v6_4;
 --    use dist_mem_gen_v6_4.all;
 
-library dist_mem_gen_v8_0_11;
-    use dist_mem_gen_v8_0_11.all;
+library dist_mem_gen_v8_0_12;
+    use dist_mem_gen_v8_0_12.all;
 
 package comp_defs is
 --
@@ -246,10 +246,10 @@ package comp_defs is
 -- 
 --    --xcc include
 
--- 1/8/2013 added the latest version of dist_mem_gen_v8_0_11
+-- 1/8/2013 added the latest version of dist_mem_gen_v8_0_12
 
--- component declaration for dist_mem_gen_v8_0_11
-   component  dist_mem_gen_v8_0_11
+-- component declaration for dist_mem_gen_v8_0_12
+   component  dist_mem_gen_v8_0_12
    -------------------
    generic(
            C_HAS_CLK               : integer := 1;
@@ -309,15 +309,15 @@ package comp_defs is
         );
    end component;
 
-   -- The following tells XST that dist_mem_gen_v8_0_11 is a black box which
+   -- The following tells XST that dist_mem_gen_v8_0_12 is a black box which
    -- should be generated.  The command given by the value of this attribute
    -- Note the fully qualified SIM (JAVA class) name that forms the
    -- basis of the core
 
    --xcc exclude
 
---   attribute box_type of dist_mem_gen_v8_0_11          : component is "black_box";
---   attribute GENERATOR_DEFAULT of dist_mem_gen_v8_0_11 : component is "generatecore com.xilinx.ip.dist_mem_gen_v8_0_11.dist_mem_gen_v8_0_11";
+--   attribute box_type of dist_mem_gen_v8_0_12          : component is "black_box";
+--   attribute GENERATOR_DEFAULT of dist_mem_gen_v8_0_12 : component is "generatecore com.xilinx.ip.dist_mem_gen_v8_0_12.dist_mem_gen_v8_0_12";
 
    --xcc include
 
@@ -1147,13 +1147,13 @@ library ieee;
 library axi_lite_ipif_v3_0_4;
 use axi_lite_ipif_v3_0_4.axi_lite_ipif;
 use axi_lite_ipif_v3_0_4.ipif_pkg.all;
-library lib_fifo_v1_0_7;
-    use lib_fifo_v1_0_7.async_fifo_fg;
+library lib_fifo_v1_0_11;
+    use lib_fifo_v1_0_11.async_fifo_fg;
 library lib_cdc_v1_0_2;
 	use lib_cdc_v1_0_2.cdc_sync;
 
-library axi_quad_spi_v3_2_10;
-    use axi_quad_spi_v3_2_10.all;
+library axi_quad_spi_v3_2_16;
+    use axi_quad_spi_v3_2_16.all;
 library unisim;
     use unisim.vcomponents.FDRE;
     use unisim.vcomponents.FDR;
@@ -1318,26 +1318,26 @@ signal wb_hpm_done_cdc_from_spi_d2 : std_logic;
 -- attribute ASYNC_REG of Rx_FIFO_Full_SYNC_SPI2AXI4 : label is "TRUE";
 -- attribute ASYNC_REG of WB_HPM_DONE_SYNC_SPI2AXI   : label is "TRUE";
 
-attribute KEEP : string;
-attribute KEEP of SS_cdc_from_spi_d2              : signal is "TRUE";
-attribute KEEP of load_axi_data_cdc_to_spi_d3    : signal is "TRUE";
-attribute KEEP of load_axi_data_cdc_to_spi_d2    : signal is "TRUE";
-attribute KEEP of type_of_burst_cdc_to_spi_d2    : signal is "TRUE";
-attribute KEEP of rx_fifo_full_d2            : signal is "TRUE";
-attribute KEEP of CPHA_cdc_to_spi_d2             : signal is "TRUE";
-attribute KEEP of CPOL_cdc_to_spi_d2             : signal is "TRUE";
-attribute KEEP of Transmit_Addr_cdc_from_axi_d2   : signal is "TRUE";
-attribute KEEP of load_cmd_cdc_from_axi_d3        : signal is "TRUE";
-attribute KEEP of load_cmd_cdc_from_axi_d2        : signal is "TRUE";
-attribute KEEP of word_xfer_cdc_from_axi_d2       : signal is "TRUE";
-attribute KEEP of hw_xfer_cdc_from_axi_d2         : signal is "TRUE";
-attribute KEEP of byte_xfer_cdc_from_axi_d2       : signal is "TRUE";
-attribute KEEP of mst_modf_err_d2            : signal is "TRUE";
-attribute KEEP of mst_modf_err_d4            : signal is "TRUE";
-attribute KEEP of spiXfer_done_d2            : signal is "TRUE";
-attribute KEEP of spiXfer_done_d3            : signal is "TRUE";
-attribute KEEP of axi_length_cdc_to_spi_d2	     : signal is "TRUE";
-attribute KEEP of dtr_length_cdc_from_axi_d2     : signal is "TRUE";
+--attribute KEEP : string;
+--attribute KEEP of SS_cdc_from_spi_d2              : signal is "TRUE";
+--attribute KEEP of load_axi_data_cdc_to_spi_d3    : signal is "TRUE";
+--attribute KEEP of load_axi_data_cdc_to_spi_d2    : signal is "TRUE";
+--attribute KEEP of type_of_burst_cdc_to_spi_d2    : signal is "TRUE";
+--attribute KEEP of rx_fifo_full_d2            : signal is "TRUE";
+--attribute KEEP of CPHA_cdc_to_spi_d2             : signal is "TRUE";
+--attribute KEEP of CPOL_cdc_to_spi_d2             : signal is "TRUE";
+--attribute KEEP of Transmit_Addr_cdc_from_axi_d2   : signal is "TRUE";
+--attribute KEEP of load_cmd_cdc_from_axi_d3        : signal is "TRUE";
+--attribute KEEP of load_cmd_cdc_from_axi_d2        : signal is "TRUE";
+--attribute KEEP of word_xfer_cdc_from_axi_d2       : signal is "TRUE";
+--attribute KEEP of hw_xfer_cdc_from_axi_d2         : signal is "TRUE";
+--attribute KEEP of byte_xfer_cdc_from_axi_d2       : signal is "TRUE";
+--attribute KEEP of mst_modf_err_d2            : signal is "TRUE";
+--attribute KEEP of mst_modf_err_d4            : signal is "TRUE";
+--attribute KEEP of spiXfer_done_d2            : signal is "TRUE";
+--attribute KEEP of spiXfer_done_d3            : signal is "TRUE";
+--attribute KEEP of axi_length_cdc_to_spi_d2	     : signal is "TRUE";
+--attribute KEEP of dtr_length_cdc_from_axi_d2     : signal is "TRUE";
 
 constant LOGIC_CHANGE : integer range 0 to 1 := 1;
 constant MTBF_STAGES_AXI2S : integer range 0 to 6 := 3 ;
@@ -2410,8 +2410,8 @@ library axi_lite_ipif_v3_0_4;
     use axi_lite_ipif_v3_0_4.axi_lite_ipif;
     use axi_lite_ipif_v3_0_4.ipif_pkg.all;
 
-library axi_quad_spi_v3_2_10;
-    use axi_quad_spi_v3_2_10.all;
+library axi_quad_spi_v3_2_16;
+    use axi_quad_spi_v3_2_16.all;
 library unisim;
     use unisim.vcomponents.FDR;
 -------------------------------------------------------------------------------
@@ -2437,6 +2437,7 @@ signal Soft_Reset_frm_axi_d2 : std_logic;
 signal Soft_Reset_frm_axi_d3 : std_logic;
 attribute ASYNC_REG : string;
 attribute ASYNC_REG of RESET_SYNC_AX2S_1     : label is "TRUE";
+attribute ASYNC_REG of RESET_SYNC_AX2S_2     : label is "TRUE";
 -----
 begin
 -----
@@ -7946,6 +7947,7 @@ signal Sync_Set                  : std_logic;
 signal Sync_Reset                : std_logic;
 signal Serial_Dout               : std_logic;
 signal Serial_Din                : std_logic;
+signal data_in                : std_logic;
 signal Shift_Reg                 : std_logic_vector
                                    (0 to C_NUM_TRANSFER_BITS-1);
 signal SS_Asserted               : std_logic;
@@ -7959,7 +7961,10 @@ signal spisel_once_1             : std_logic;
 signal spisel_pulse              : std_logic;
 signal rising_edge_sck_i         : std_logic;
 signal falling_edge_sck_i        : std_logic;
+signal rising_edge_sck_i_k         : std_logic;
+signal falling_edge_sck_i_k        : std_logic;
 signal edge_sck_i                : std_logic;
+signal edge_sck_i_k                : std_logic;
 
 signal MODF_strobe_int           : std_logic;
 signal master_tri_state_en_control: std_logic;
@@ -8686,8 +8691,24 @@ end process SCK_I_DELAY_1CLK_PROCESS;
 RISING_EDGE_CLK_RATIO_4_GEN : if C_SCK_RATIO = 4 generate
 begin
      -- generate a SCK control pulse for rising edge as well as falling edge
-   rising_edge_sck_i  <= SCK_I and (not(SCK_I_sync)) and (not(SPISEL_sync));
-   falling_edge_sck_i <= (not(SCK_I) and SCK_I_sync) and (not(SPISEL_sync));
+--   rising_edge_sck_i  <= SCK_I and (not(SCK_I_sync)) and (not(SPISEL_sync));
+--   falling_edge_sck_i <= (not(SCK_I) and SCK_I_sync) and (not(SPISEL_sync));
+
+   rising_edge_sck_i  <= SCK_I_sync and (not(sck_i_d1)) and (not(SPISEL_sync));
+   falling_edge_sck_i <= (not(SCK_I_sync) and sck_i_d1) and (not(SPISEL_sync));
+
+
+DATA_I_DELAY_1CLK_PROCESS: process(Bus2IP_Clk)
+begin
+    if(Bus2IP_Clk'event and Bus2IP_Clk = '1') then
+        if(Soft_Reset_op = RESET_ACTIVE) then
+            Serial_Din <= '0';
+        else
+            Serial_Din <= data_in;
+        end if;
+    end if;
+end process DATA_I_DELAY_1CLK_PROCESS;
+
 end generate RISING_EDGE_CLK_RATIO_4_GEN;
 -------------------------------------------------------------------------------
 
@@ -8702,11 +8723,14 @@ begin
      -- generate a SCK control pulse for rising edge as well as falling edge
    rising_edge_sck_i  <= SCK_I_sync and (not(sck_i_d1)) and (not(SPISEL_sync));
    falling_edge_sck_i <= (not(SCK_I_sync) and sck_i_d1) and (not(SPISEL_sync));
+
+            Serial_Din <= data_in;
 end generate RISING_EDGE_CLK_RATIO_OTHERS_GEN;
 -------------------------------------------------------------------------------
 
 -- combine rising edge as well as falling edge as a single signal
 edge_sck_i         <= rising_edge_sck_i or falling_edge_sck_i;
+edge_sck_i_k         <= rising_edge_sck_i_k or falling_edge_sck_i_k;
 no_slave_selected <= and_reduce(Slave_Select_Reg(0 to (C_NUM_SS_BITS-1)));
 -------------------------------------------------------------------------------
 -- TRANSFER_START_PROCESS : Generate transfer start signal. When the transfer
@@ -9189,12 +9213,15 @@ mosi_i_sync <= 	MOSI_I;
  -----
         if(Mst_N_Slv = '1' )then
            if(Loop_mode = '1')then
-             Serial_Din <= serial_dout_int;
+           --  Serial_Din <= serial_dout_int;
+             data_in <= serial_dout_int;
            else
-             Serial_Din <= miso_i_sync;
+             --Serial_Din <= miso_i_sync;
+            data_in <= miso_i_sync;
            end if;
         else
-             Serial_Din <= mosi_i_sync;
+             --Serial_Din <= mosi_i_sync;
+             data_in <= mosi_i_sync;
         end if;
  end process EXTERNAL_INPUT_OR_LOOP_PROCESS;
 -------------------------------------------------------------------------------
@@ -9345,7 +9372,7 @@ begin
               rx_shft_reg_mode_0011 <= (others => '0');
         elsif((sck_rising_edge = '1') and (transfer_start='1')) then
              rx_shft_reg_mode_0011<= rx_shft_reg_mode_0011
-                                   (1 to (C_NUM_TRANSFER_BITS-1)) & Serial_Din;
+                                   (1 to (C_NUM_TRANSFER_BITS-1)) & data_in; --Serial_Din;
         end if;
     end if;
 end process CAPT_RX_FE_MODE_00_11;
@@ -9362,7 +9389,7 @@ CAPT_RX_FE_MODE_01_10 : process(Bus2IP_Clk)
                 rx_shft_reg_mode_0110 <= (others => '0');
           elsif ((sck_fe1 = '1') and (transfer_start = '1')) then
                 rx_shft_reg_mode_0110 <= rx_shft_reg_mode_0110
-                                    (1 to (C_NUM_TRANSFER_BITS-1)) & Serial_Din;
+                                    (1 to (C_NUM_TRANSFER_BITS-1)) & data_in; --Serial_Din;
           end if;
       end if;
   end process CAPT_RX_FE_MODE_01_10;
@@ -9996,7 +10023,7 @@ begin
            SS_O                   <= (others => '1');
            SS_Asserted            <= '0';
            SS_Asserted_1dly       <= '0';
-       elsif(transfer_start = '0') or (xfer_done_fifo_0 = '1') then    -- Tranfer not in progress
+       elsif(((transfer_start_d1 = '0') or (xfer_done_fifo_0 = '1')) or (Manual_SS_mode = '0' and stop_clock = '1')) then    -- Tranfer not in progress
            if(Manual_SS_mode = '0') then   -- Auto SS assert
                SS_O   <= (others => '1');
            else
@@ -10153,11 +10180,11 @@ library lib_pkg_v1_0_2;
     use lib_pkg_v1_0_2.lib_pkg.log2;
     use lib_pkg_v1_0_2.lib_pkg.RESET_ACTIVE;
 
-library axi_quad_spi_v3_2_10;
-    use axi_quad_spi_v3_2_10.comp_defs.all;
+library axi_quad_spi_v3_2_16;
+    use axi_quad_spi_v3_2_16.comp_defs.all;
 
-library dist_mem_gen_v8_0_11;
-    use dist_mem_gen_v8_0_11.all;
+library dist_mem_gen_v8_0_12;
+    use dist_mem_gen_v8_0_12.all;
 
 library xpm;
 
@@ -10218,6 +10245,7 @@ component  xpm_memory_sprom
   MEMORY_SIZE         : integer := 4096*32;
   MEMORY_PRIMITIVE    : string  := "auto";
   ECC_MODE            : string  := "no_ecc";
+  USE_MEM_INIT        : integer := 1;
   MEMORY_INIT_FILE    : string  := "none";
   MEMORY_INIT_PARAM   : string  := "";
   WAKEUP_TIME         : string  := "disable_sleep";
@@ -10265,11 +10293,13 @@ signal Dummy_2 : std_logic;
 signal Dummy_1 : std_logic;
 signal Dummy_0 : std_logic;
 signal CMD_decoded_int : std_logic;
+signal Rst_to_spi_b : std_logic;
 -----
 begin
 -----
 
 Local_rst <= TXFIFO_RST or Rst_to_spi;
+Rst_to_spi_b <= Rst_to_spi;
 
    -- LUT for C_SPI_MODE = 1 start  --
 
@@ -10360,8 +10390,9 @@ begin
 
                  generic map (
                          MEMORY_SIZE             => C_LOOK_UP_TABLE_WIDTH*C_LUT_DEPTH,
-                         MEMORY_PRIMITIVE        =>  "lutram",
+                         MEMORY_PRIMITIVE        =>  "auto",
                          ECC_MODE                =>  "no_ecc",
+                       USE_MEM_INIT            => 1,
                          MEMORY_INIT_FILE        => "mode_1_memory_0_mixed.mem",
                          MEMORY_INIT_PARAM       => "",
                          WAKEUP_TIME             => "disable_sleep",
@@ -10378,7 +10409,7 @@ begin
                        
                         -- Port A module ports
                          clka                    => EXT_SPI_CLK,
-                         rsta                    => Rst_to_spi, 
+                         rsta                    =>  Rst_to_spi_b, 
                          ena                     => '1', 
                          regcea                  => '1',
                          addra                   => Look_up_address,
@@ -10392,7 +10423,7 @@ begin
 
      dist_mem_gen_QSPI_LOOK_UP_MODE_1_MEMORY_0 : if (C_SELECT_XPM = 0) generate
      --C_SPI_MODE_1_MIXED_ROM_I: dist_mem_gen_v6_4
-     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_11.dist_mem_gen_v8_0_11
+     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_12.dist_mem_gen_v8_0_12
      -------------------
                 generic map(
                         C_HAS_CLK               => 1,
@@ -10561,9 +10592,10 @@ begin
 
                 generic map (
                         MEMORY_SIZE             => C_LUT_DEPTH*C_LOOK_UP_TABLE_WIDTH,
-                        MEMORY_PRIMITIVE        =>  "lutram",
+                        MEMORY_PRIMITIVE        =>  "auto",
                         ECC_MODE                =>  "no_ecc",
                         MEMORY_INIT_FILE        => "mode_1_memory_1_wb.mem",
+                       USE_MEM_INIT            => 1,
                         MEMORY_INIT_PARAM       => "",
                         WAKEUP_TIME             => "disable_sleep",
                         MESSAGE_CONTROL         =>  0,
@@ -10579,7 +10611,7 @@ begin
                       
                        -- Port A module ports
                         clka                    => EXT_SPI_CLK,
-                        rsta                    => Rst_to_spi, 
+                        rsta                    => Rst_to_spi_b, 
                         ena                     => '1', 
                         regcea                  => '1',
                         addra                   => Look_up_address,
@@ -10594,7 +10626,7 @@ begin
       dist_mem_gen_QSPI_LOOK_UP_MODE_1_MEMORY_1 : if (C_SELECT_XPM = 0) generate
 
      --C_SPI_MODE_1_WB_ROM_I: dist_mem_gen_v6_4
-     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_11.dist_mem_gen_v8_0_11
+     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_12.dist_mem_gen_v8_0_12
      -------------------
                 generic map(
                         C_HAS_CLK               => 1,
@@ -10764,8 +10796,9 @@ begin
 
                generic map (
                        MEMORY_SIZE             => C_LUT_DEPTH*C_LOOK_UP_TABLE_WIDTH,
-                       MEMORY_PRIMITIVE        =>  "lutram",
+                       MEMORY_PRIMITIVE        =>  "auto",
                        ECC_MODE                =>  "no_ecc",
+                       USE_MEM_INIT            => 1,
                        MEMORY_INIT_FILE        => "mode_1_memory_2_nm.mem",
                        MEMORY_INIT_PARAM       => "",
                        WAKEUP_TIME             => "disable_sleep",
@@ -10782,7 +10815,7 @@ begin
                      
                       -- Port A module ports
                        clka                    => EXT_SPI_CLK,
-                       rsta                    => Rst_to_spi, 
+                       rsta                    => Rst_to_spi_b, 
                        ena                     => '1', 
                        regcea                  => '1',
                        addra                   => Look_up_address,
@@ -10798,7 +10831,7 @@ begin
 
 
      --C_SPI_MODE_1_NM_ROM_I: dist_mem_gen_v6_4
-     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_11.dist_mem_gen_v8_0_11
+     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_12.dist_mem_gen_v8_0_12
      -------------------
                 generic map(
                         C_HAS_CLK               => 1,
@@ -10965,7 +10998,8 @@ begin
 
                generic map (
                        MEMORY_SIZE             => C_LOOK_UP_TABLE_WIDTH*C_LUT_DEPTH,
-                       MEMORY_PRIMITIVE        =>  "lutram",
+                       MEMORY_PRIMITIVE        =>  "auto",
+                       USE_MEM_INIT            => 1,
                        ECC_MODE                =>  "no_ecc",
                        MEMORY_INIT_FILE        =>  "mode_1_memory_3_sp.mem",
                        MEMORY_INIT_PARAM       => "",
@@ -10983,7 +11017,7 @@ begin
                      
                       -- Port A module ports
                        clka                    => EXT_SPI_CLK,
-                       rsta                    => Rst_to_spi, 
+                       rsta                    => Rst_to_spi_b, 
                        ena                     => '1', 
                        regcea                  => '1',
                        addra                   => Look_up_address,
@@ -10998,7 +11032,7 @@ begin
      dist_mem_gen_QSPI_LOOK_UP_MODE_1_MEMORY_3 : if (C_SELECT_XPM = 0) generate
 
      --C_SPI_MODE_1_NM_ROM_I: dist_mem_gen_v6_4
-     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_11.dist_mem_gen_v8_0_11
+     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_12.dist_mem_gen_v8_0_12
      -------------------
                 generic map(
                         C_HAS_CLK               => 1,
@@ -11176,8 +11210,9 @@ begin
 
               generic map (
                       MEMORY_SIZE             => C_LOOK_UP_TABLE_WIDTH*C_LUT_DEPTH,
-                      MEMORY_PRIMITIVE        =>  "lutram",
+                      MEMORY_PRIMITIVE        =>  "auto",
                       ECC_MODE                =>  "no_ecc",
+                       USE_MEM_INIT            => 1,
                       MEMORY_INIT_FILE        =>  "mode_2_memory_0_mixed.mem",
                       MEMORY_INIT_PARAM       => "",
                       WAKEUP_TIME             => "disable_sleep",
@@ -11194,7 +11229,7 @@ begin
                     
                      -- Port A module ports
                       clka                    => EXT_SPI_CLK,
-                      rsta                    => Rst_to_spi, 
+                      rsta                    => Rst_to_spi_b, 
                       ena                     => '1', 
                       regcea                  => '1',
                       addra                   => Look_up_address,
@@ -11210,7 +11245,7 @@ begin
 
 
      --C_SPI_MODE_2_MIXED_ROM_I: dist_mem_gen_v6_4
-     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_11.dist_mem_gen_v8_0_11
+     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_12.dist_mem_gen_v8_0_12
      -------------------
                 generic map(
                         C_HAS_CLK               => 1,
@@ -11380,8 +11415,9 @@ begin
 
                generic map (
                        MEMORY_SIZE             => C_LOOK_UP_TABLE_WIDTH*C_LUT_DEPTH,
-                       MEMORY_PRIMITIVE        =>  "lutram",
+                       MEMORY_PRIMITIVE        =>  "auto",
                        ECC_MODE                =>  "no_ecc",
+                       USE_MEM_INIT            => 1,
                        MEMORY_INIT_FILE        =>  "mode_2_memory_1_wb.mem",
                        MEMORY_INIT_PARAM       => "",
                        WAKEUP_TIME             => "disable_sleep",
@@ -11398,7 +11434,7 @@ begin
                      
                       -- Port A module ports
                        clka                    => EXT_SPI_CLK,
-                       rsta                    => Rst_to_spi, 
+                       rsta                    => Rst_to_spi_b, 
                        ena                     => '1', 
                        regcea                  => '1',
                        addra                   => Look_up_address,
@@ -11413,7 +11449,7 @@ begin
      dist_mem_gen_QSPI_LOOK_UP_MODE_2_MEMORY_1 : if (C_SELECT_XPM = 0) generate
 
      --C_SPI_MODE_2_WB_ROM_I: dist_mem_gen_v6_4
-     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_11.dist_mem_gen_v8_0_11
+     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_12.dist_mem_gen_v8_0_12
      -------------------
                 generic map(
                         C_HAS_CLK               => 1,
@@ -11589,8 +11625,9 @@ begin
 
                generic map (
                        MEMORY_SIZE             => C_LOOK_UP_TABLE_WIDTH*C_LUT_DEPTH,
-                       MEMORY_PRIMITIVE        =>  "lutram",
+                       MEMORY_PRIMITIVE        =>  "auto",
                        ECC_MODE                =>  "no_ecc",
+                       USE_MEM_INIT            => 1,
                        MEMORY_INIT_FILE        =>  "mode_2_memory_2_nm.mem",
                        MEMORY_INIT_PARAM       => "",
                        WAKEUP_TIME             => "disable_sleep",
@@ -11607,7 +11644,7 @@ begin
                      
                       -- Port A module ports
                        clka                    => EXT_SPI_CLK,
-                       rsta                    => Rst_to_spi, 
+                       rsta                    => Rst_to_spi_b, 
                        ena                     => '1', 
                        regcea                  => '1',
                        addra                   => Look_up_address,
@@ -11622,7 +11659,7 @@ begin
       dist_mem_gen_QSPI_LOOK_UP_MODE_2_MEMORY_2 : if (C_SELECT_XPM = 0) generate
 
      --C_SPI_MODE_2_NM_ROM_I: dist_mem_gen_v6_4
-     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_11.dist_mem_gen_v8_0_11
+     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_12.dist_mem_gen_v8_0_12
      -------------------
                 generic map(
                         C_HAS_CLK               => 1,
@@ -11789,8 +11826,9 @@ begin
 
                generic map (
                        MEMORY_SIZE             => C_LOOK_UP_TABLE_WIDTH*C_LUT_DEPTH,
-                       MEMORY_PRIMITIVE        =>  "lutram",
+                       MEMORY_PRIMITIVE        =>  "auto",
                        ECC_MODE                =>  "no_ecc",
+                       USE_MEM_INIT            => 1,
                        MEMORY_INIT_FILE        =>  "mode_2_memory_3_sp.mem",
                        MEMORY_INIT_PARAM       => "",
                        WAKEUP_TIME             => "disable_sleep",
@@ -11807,7 +11845,7 @@ begin
                      
                       -- Port A module ports
                        clka                    => EXT_SPI_CLK,
-                       rsta                    => Rst_to_spi, 
+                       rsta                    => Rst_to_spi_b, 
                        ena                     => '1', 
                        regcea                  => '1',
                        addra                   => Look_up_address,
@@ -11822,7 +11860,7 @@ begin
       dist_mem_gen_QSPI_LOOK_UP_MODE_2_MEMORY_3 : if (C_SELECT_XPM = 0) generate
 
      --C_SPI_MODE_2_NM_ROM_I: dist_mem_gen_v6_4
-     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_11.dist_mem_gen_v8_0_11
+     C_SPI_MODE_1_MIXED_ROM_I: entity dist_mem_gen_v8_0_12.dist_mem_gen_v8_0_12
      -------------------
                 generic map(
                         C_HAS_CLK               => 1,
@@ -12083,7 +12121,8 @@ entity qspi_fifo_ifmodule is
        DTR_Underrun_strobe  : out std_logic;
        ---------------------
        SPIXfer_done         : in std_logic;
-       rready               : in std_logic
+       rready               : in std_logic;
+       wready               : in std_logic
        --DRR_Overrun_reg      : out std_logic
        ---------------------
     );
@@ -12170,7 +12209,7 @@ begin
         if (Soft_Reset_op = RESET_ACTIVE) then
             Transmit_ip2bus_error <= '0';
         else
-            Transmit_ip2bus_error <= Tx_FIFO_Full and Bus2IP_TxFIFO_WrCE;
+            Transmit_ip2bus_error <= Tx_FIFO_Full and Bus2IP_TxFIFO_WrCE and wready;
         end if;
     end if;
 end process TX_ERROR_ACK_REG_PROCESS;
@@ -12750,8 +12789,8 @@ use ieee.numeric_std.all;
 library axi_lite_ipif_v3_0_4;
     use axi_lite_ipif_v3_0_4.axi_lite_ipif;
     use axi_lite_ipif_v3_0_4.ipif_pkg.all;
-library axi_quad_spi_v3_2_10;
-    use axi_quad_spi_v3_2_10.all;
+library axi_quad_spi_v3_2_16;
+    use axi_quad_spi_v3_2_16.all;
 
 -------------------------------------------------------------------------------
 --                     Definition of Generics
@@ -13032,7 +13071,7 @@ begin
     -- -----------------
     GEN_FOR_MULTI_CS : if C_ARD_ADDR_RANGE_ARRAY'length > 2 generate
             -- Instantiate the basic Base Address Decoders
-            MEM_SELECT_I: entity axi_quad_spi_v3_2_10.pselect_f
+            MEM_SELECT_I: entity axi_quad_spi_v3_2_16.pselect_f
                 generic map
                 (
                     C_AB     => DECODE_BITS(bar_index),
@@ -13081,7 +13120,7 @@ begin
         constant BAR    : std_logic_vector(0 to CE_ADDR_SIZE-1) :=
                             std_logic_vector(to_unsigned(j,CE_ADDR_SIZE));
         begin
-            CE_I : entity axi_quad_spi_v3_2_10.pselect_f
+            CE_I : entity axi_quad_spi_v3_2_16.pselect_f
                 generic map (
                     C_AB        => CE_ADDR_SIZE                             ,
                     C_AW        => CE_ADDR_SIZE                             ,
@@ -13230,8 +13269,8 @@ library lib_pkg_v1_0_2;
 library unisim;
     use unisim.vcomponents.FDRE;
 
-library axi_quad_spi_v3_2_10;
-    use axi_quad_spi_v3_2_10.all;
+library axi_quad_spi_v3_2_16;
+    use axi_quad_spi_v3_2_16.all;
 
 entity qspi_dual_quad_mode is
         generic
@@ -13314,7 +13353,7 @@ dts_int <= DT when (SS = "10") else "0000";
 
 reset_invert <= not reset2ip_reset;
 
-  QSPI_STARTUP_BLOCK_I: entity axi_quad_spi_v3_2_10.qspi_startup_block
+  QSPI_STARTUP_BLOCK_I: entity axi_quad_spi_v3_2_16.qspi_startup_block
   ---------------------
   generic map
        (
@@ -13452,8 +13491,8 @@ library lib_cdc_v1_0_2;
 	use lib_cdc_v1_0_2.cdc_sync;
 	
 
-library axi_quad_spi_v3_2_10;
-    use axi_quad_spi_v3_2_10.all;
+library axi_quad_spi_v3_2_16;
+    use axi_quad_spi_v3_2_16.all;
 library unisim;
     use unisim.vcomponents.FDRE;
     use unisim.vcomponents.FDR;
@@ -13827,16 +13866,16 @@ signal SPICR_RX_FIFO_Rst_en_d2 : std_logic;
 -- attribute ASYNC_REG of TX_EMPT_4_SPISR_S2AX_1_CDC      : label is "TRUE";
 -- attribute ASYNC_REG of DRR_OVERRUN_S2AX_1_CDC          : label is "TRUE"; -- 3/25/2013
 
-attribute KEEP : string;
-attribute KEEP of SPISR_0_CMD_Error_cdc_from_spi_d2: signal is "TRUE";
-attribute KEEP of spisel_d1_reg_cdc_from_spi_d2: signal is "TRUE";
-attribute KEEP of spisel_pulse_cdc_from_spi_d2: signal is "TRUE";
-attribute KEEP of spisel_pulse_cdc_from_spi_d1: signal is "TRUE";
-attribute KEEP of Mst_N_Slv_mode_cdc_from_spi_d2: signal is "TRUE";
-attribute KEEP of Slave_MODF_strobe_cdc_from_spi_d2: signal is "TRUE";
-attribute KEEP of Slave_MODF_strobe_cdc_from_spi_d1: signal is "TRUE";
-attribute KEEP of modf_strobe_cdc_from_spi_d2      : signal is "TRUE";
-attribute KEEP of modf_strobe_cdc_from_spi_d1      : signal is "TRUE";
+--attribute KEEP : string;
+--attribute KEEP of SPISR_0_CMD_Error_cdc_from_spi_d2: signal is "TRUE";
+--attribute KEEP of spisel_d1_reg_cdc_from_spi_d2: signal is "TRUE";
+--attribute KEEP of spisel_pulse_cdc_from_spi_d2: signal is "TRUE";
+--attribute KEEP of spisel_pulse_cdc_from_spi_d1: signal is "TRUE";
+--attribute KEEP of Mst_N_Slv_mode_cdc_from_spi_d2: signal is "TRUE";
+--attribute KEEP of Slave_MODF_strobe_cdc_from_spi_d2: signal is "TRUE";
+--attribute KEEP of Slave_MODF_strobe_cdc_from_spi_d1: signal is "TRUE";
+--attribute KEEP of modf_strobe_cdc_from_spi_d2      : signal is "TRUE";
+--attribute KEEP of modf_strobe_cdc_from_spi_d1      : signal is "TRUE";
 
 constant LOGIC_CHANGE : integer range 0 to 1 := 1;
 constant MTBF_STAGES_AXI2S : integer range 0 to 6 := 3 ;
@@ -14546,6 +14585,13 @@ LOGIC_GENERATION_FDR : if (Async_Clk = 0) generate
 
  
  LOGIC_GENERATION_CDC : if Async_Clk = 1 generate
+ attribute ASYNC_REG : string;
+ attribute ASYNC_REG of SPISEL_PULSE_S2AX_1_CDC     : label is "TRUE";
+ -- attribute ASYNC_REG of SLAVE_MODF_STROBE_SYNC_SPI_2_AXI_1 : label is "TRUE";
+ attribute ASYNC_REG of RX_FIFO_RST_AX2S_1_CDC_1    : label is "TRUE";
+ attribute ASYNC_REG of SPISEL_PULSE_S2AX_2     : label is "TRUE";
+
+begin
 --==============================================================================
 
 CMD_ERR_S2AX_1: entity lib_cdc_v1_0_2.cdc_sync
@@ -15456,8 +15502,8 @@ use axi_lite_ipif_v3_0_4.ipif_pkg.all;
 library lib_cdc_v1_0_2;
 	use lib_cdc_v1_0_2.cdc_sync;
 
-library axi_quad_spi_v3_2_10;
-    use axi_quad_spi_v3_2_10.all;
+library axi_quad_spi_v3_2_16;
+    use axi_quad_spi_v3_2_16.all;
 library unisim;
     use unisim.vcomponents.FDRE;
     use unisim.vcomponents.FDR;
@@ -17679,8 +17725,8 @@ use UNISIM.vcomponents.all;
 library axi_lite_ipif_v3_0_4;
 use axi_lite_ipif_v3_0_4.axi_lite_ipif;
 use axi_lite_ipif_v3_0_4.ipif_pkg.all;
-library lib_fifo_v1_0_7;
-    use lib_fifo_v1_0_7.async_fifo_fg;
+library lib_fifo_v1_0_11;
+    use lib_fifo_v1_0_11.async_fifo_fg;
 library lib_srl_fifo_v1_0_2;
     use lib_srl_fifo_v1_0_2.srl_fifo_f;
 	
@@ -17697,8 +17743,8 @@ library lib_pkg_v1_0_2;
 
 library interrupt_control_v3_1_4;
 
-library axi_quad_spi_v3_2_10;
-    use axi_quad_spi_v3_2_10.all;
+library axi_quad_spi_v3_2_16;
+    use axi_quad_spi_v3_2_16.all;
 -------------------------------------------------------------------------------
 
 entity qspi_core_interface is
@@ -17760,6 +17806,8 @@ generic(
         burst_tr         : in std_logic;
         rready           : in std_logic;
         WVALID           : in std_logic;
+	WREADY		 : in std_logic;
+	TX_Fifo_full_indication	 : out std_logic; 
         --SPI Ports
         SCK_I            : in  std_logic;
         SCK_O            : out std_logic;
@@ -17934,10 +17982,12 @@ signal do_int  : std_logic_vector(3 downto 0); 	   -- input
 
  signal data_Exists_RcFIFO_int   : std_logic;
  signal tx_FIFO_Empty_strobe_int : std_logic;
- signal tx_FIFO_occ_Reversed_int : std_logic_vector
-                                            ((C_OCCUPANCY_NUM_BITS-1) downto 0);
+-- signal tx_FIFO_occ_Reversed_int : std_logic_vector
+                               --             ((C_OCCUPANCY_NUM_BITS-1) downto 0);
  signal tx_FIFO_occ_Reversed_int_2 : std_logic_vector
                                             ((C_OCCUPANCY_NUM_BITS-1) downto 0);
+signal Tx_FIFO_occ_Reversed_int           : std_logic_vector((C_OCCUPANCY_NUM_BITS - 1) downto 0);
+signal Rx_FIFO_occ_Reversed_int           : std_logic_vector((C_OCCUPANCY_NUM_BITS - 1) downto 0);
 
  signal data_Exists_TxFIFO_int   : std_logic;
  signal data_Exists_TxFIFO_int_1 : std_logic;
@@ -18130,7 +18180,7 @@ signal tx_fifo_rd_ack_open            : std_logic;
 signal tx_fifo_empty                  : std_logic;
 signal tx_fifo_almost_full            : std_logic;
 signal tx_fifo_almost_empty           : std_logic;
-signal tx_fifo_occ_reversed           : std_logic_vector((C_OCCUPANCY_NUM_BITS-1) downto 0);
+--signal tx_fifo_occ_reversed           : std_logic_vector((C_OCCUPANCY_NUM_BITS-1) downto 0);
 signal c_wr_count_width               : std_logic;
 
 
@@ -18141,7 +18191,7 @@ signal rx_fifo_full                   : std_logic;
 
 signal rx_fifo_almost_full            : std_logic;
 signal rx_fifo_almost_empty           : std_logic;
-signal rx_fifo_occ_reversed           : std_logic_vector((C_OCCUPANCY_NUM_BITS-1) downto 0);
+--signal rx_fifo_occ_reversed           : std_logic_vector((C_OCCUPANCY_NUM_BITS-1) downto 0);
 
 
 signal SPISSR_frm_axi_clk : std_logic_vector(0 to (C_NUM_SS_BITS-1));
@@ -18360,7 +18410,7 @@ SS_I_int <= SS_I;
 
 
 
-
+TX_Fifo_full_indication <= Tx_FIFO_Full;
 -----------------------------------
 -- Combinatorial operations for SPI
 -----------------------------------
@@ -18653,7 +18703,8 @@ wr_ce_reduce_ack_gen <= ip2Bus_WrAck_core_reg;--_1;
 IP2Bus_WrAck      <= intr_ip2bus_wrack        or -- common
                     rst_ip2bus_wrack           or -- common
                     ip2Bus_WrAck_intr_reg_hole or -- newly added to target the holes in register space
-                    (ip2Bus_WrAck_core_reg and (not burst_tr));-- or
+                 --   ip2Bus_WrAck_core_reg_d1;-- or
+                   (ip2Bus_WrAck_core_reg and (not burst_tr));-- or
                     --(Tx_FIFO_wr_ack and burst_tr); -- newly added
 
 -------------------------------------------------
@@ -18766,6 +18817,8 @@ begin
                                              and not (Tx_FIFO_Empty_SPISR_to_axi_clk); --  (Tx_FIFO_Empty);
      IP2Bus_Tx_FIFO_OCC_Reg_Data_int_1(3) <= IP2Bus_Tx_FIFO_OCC_Reg_Data_int(3)
                                              and not (Tx_FIFO_Empty_SPISR_to_axi_clk); --  (Tx_FIFO_Empty); --(FIFO_Empty_tx);
+  --   IP2Bus_Tx_FIFO_OCC_Reg_Data_int_1(4) <= IP2Bus_Tx_FIFO_OCC_Reg_Data_int(4)
+    --                                         and not (Tx_FIFO_Empty_SPISR_to_axi_clk); --  (Tx_FIFO_Empty); --(FIFO_Empty_tx);
 
      IP2Bus_Rx_FIFO_OCC_Reg_Data_int_1(0) <= IP2Bus_Rx_FIFO_OCC_Reg_Data_int(0)
                                              and not (Rx_FIFO_Empty);
@@ -18775,6 +18828,8 @@ begin
                                              and not (Rx_FIFO_Empty);
      IP2Bus_Rx_FIFO_OCC_Reg_Data_int_1(3) <= IP2Bus_Rx_FIFO_OCC_Reg_Data_int(3)
                                              and not (Rx_FIFO_Empty); --(FIFO_Empty_rx);
+    -- IP2Bus_Rx_FIFO_OCC_Reg_Data_int_1(4) <= IP2Bus_Rx_FIFO_OCC_Reg_Data_int(4)
+      --                                       and not (Rx_FIFO_Empty); --(FIFO_Empty_rx);
 
 end generate TX_FIFO_OCC_DATA_FIFO_16;
 --------------------------------------
@@ -18799,6 +18854,8 @@ begin
                                              and not  (Tx_FIFO_Empty_SPISR_to_axi_clk); -- (Tx_FIFO_Empty);
      IP2Bus_Tx_FIFO_OCC_Reg_Data_int_1(7) <= IP2Bus_Tx_FIFO_OCC_Reg_Data_int(7)
                                              and not  (Tx_FIFO_Empty_SPISR_to_axi_clk); -- (Tx_FIFO_Empty);-- (FIFO_Empty_tx);
+  --   IP2Bus_Tx_FIFO_OCC_Reg_Data_int_1(8) <= IP2Bus_Tx_FIFO_OCC_Reg_Data_int(8)
+    --                                         and not  (Tx_FIFO_Empty_SPISR_to_axi_clk); -- (Tx_FIFO_Empty);-- (FIFO_Empty_tx);
 
      IP2Bus_Rx_FIFO_OCC_Reg_Data_int_1(0) <= IP2Bus_Rx_FIFO_OCC_Reg_Data_int(0)
                                              and not (Rx_FIFO_Empty);
@@ -18817,6 +18874,8 @@ begin
                                              and not (Rx_FIFO_Empty);
      IP2Bus_Rx_FIFO_OCC_Reg_Data_int_1(7) <= IP2Bus_Rx_FIFO_OCC_Reg_Data_int(7)
                                              and not (Rx_FIFO_Empty); --(FIFO_Empty_rx);
+   --  IP2Bus_Rx_FIFO_OCC_Reg_Data_int_1(8) <= IP2Bus_Rx_FIFO_OCC_Reg_Data_int(8)
+     --                                        and not (Rx_FIFO_Empty); --(FIFO_Empty_rx);
 
 end generate TX_FIFO_OCC_DATA_FIFO_256;
 
@@ -18914,7 +18973,7 @@ end generate ENHANCED_MD_IP2BUS_DATA_GEN;
 
 -------------------------------------------------------------------------------
 
-RESET_SYNC_AXI_SPI_CLK_INST:entity axi_quad_spi_v3_2_10.reset_sync_module
+RESET_SYNC_AXI_SPI_CLK_INST:entity axi_quad_spi_v3_2_16.reset_sync_module
                port map(
                          EXT_SPI_CLK        => EXT_SPI_CLK        ,-- in std_logic;
                          --Bus2IP_Clk         => Bus2IP_Clk         ,-- in std_logic;
@@ -18953,7 +19012,7 @@ begin
      -- I_RECEIVE_REG : INSTANTIATE RECEIVE REGISTER
      --------------------------------------------------------------------------
 
-     QSPI_RX_TX_REG: entity axi_quad_spi_v3_2_10.qspi_receive_transmit_reg
+     QSPI_RX_TX_REG: entity axi_quad_spi_v3_2_16.qspi_receive_transmit_reg
      generic map
            (
              C_S_AXI_DATA_WIDTH      => C_S_AXI_DATA_WIDTH,
@@ -19008,7 +19067,7 @@ begin
 
      SR_3_modf_frm_axi_clk         <= SR_3_modf_int;
 
-     CROSS_CLK_FIFO_0_INST:entity axi_quad_spi_v3_2_10.cross_clk_sync_fifo_0
+     CROSS_CLK_FIFO_0_INST:entity axi_quad_spi_v3_2_16.cross_clk_sync_fifo_0
      generic map(
                  C_NUM_TRANSFER_BITS    => C_NUM_TRANSFER_BITS,
                  Async_Clk              => Async_Clk          ,
@@ -19167,8 +19226,8 @@ end generate NO_FIFO_EXISTS;
 -------------------------------------------------------------------------------
 FIFO_EXISTS: if(C_FIFO_EXIST = 1) generate
 ------------------------------
-constant C_RD_COUNT_WIDTH_INT : integer := clog2(C_FIFO_DEPTH);
-constant C_WR_COUNT_WIDTH_INT : integer := clog2(C_FIFO_DEPTH);
+constant C_RD_COUNT_WIDTH_INT : integer := clog2(C_FIFO_DEPTH) + 1;
+constant C_WR_COUNT_WIDTH_INT : integer := clog2(C_FIFO_DEPTH) + 1;
 constant RX_FIFO_CNTR_WIDTH: integer := clog2(C_FIFO_DEPTH);
 constant TX_FIFO_CNTR_WIDTH: integer := clog2(C_FIFO_DEPTH);
 constant ZERO_RX_FIFO_CNT   : std_logic_vector(RX_FIFO_CNTR_WIDTH-1 downto 0) := (others => '0');
@@ -19187,6 +19246,10 @@ signal IP2Bus_WrAck_transmit_enable : std_logic;
 signal data_Exists_RcFIFO_int_d1: std_logic;
 signal data_Exists_RcFIFO_pulse : std_logic;
 
+signal Rx_FIFO_occ_Reversed           : std_logic_vector((C_RD_COUNT_WIDTH_INT - 1) downto 0);
+signal Rx_FIFO_occ_Reversed_oneless           : std_logic_vector((C_RD_COUNT_WIDTH_INT - 1) downto 0);
+signal Tx_FIFO_occ_Reversed           : std_logic_vector((C_RD_COUNT_WIDTH_INT-1) downto 0);
+signal Tx_FIFO_occ_Reversed_oneless           : std_logic_vector((C_RD_COUNT_WIDTH_INT - 1) downto 0);
 --signal FIFO_Empty_rx : std_logic;
 --signal SPISR_0_CMD_Error_frm_spi_clk : std_logic;
 --signal SPISR_0_CMD_Error_to_axi_clk  : std_logic;
@@ -19244,7 +19307,7 @@ begin
      SR_3_modf_frm_axi_clk         <= SR_3_modf_int;
 
 --CLK_CROSS_I:
-CLK_CROSS_I:entity axi_quad_spi_v3_2_10.cross_clk_sync_fifo_1
+CLK_CROSS_I:entity axi_quad_spi_v3_2_16.cross_clk_sync_fifo_1
      generic map(
              C_FAMILY                     => C_FAMILY           ,
              C_FIFO_DEPTH                 => C_FIFO_DEPTH       ,
@@ -19555,7 +19618,7 @@ CLK_CROSS_I:entity axi_quad_spi_v3_2_10.cross_clk_sync_fifo_1
 -- Receive FIFO Logic
 rx_fifo_reset <= Rst_to_spi_int or reset_RcFIFO_ptr_to_spi_clk;
 
-RX_FIFO_II: entity lib_fifo_v1_0_7.async_fifo_fg --axi_quad_spi_v3_2_10_0.async_fifo_fg --lib_fifo_v1_0_7_4.async_fifo_fg
+RX_FIFO_II: entity lib_fifo_v1_0_11.async_fifo_fg --axi_quad_spi_v3_2_16_0.async_fifo_fg --lib_fifo_v1_0_11_4.async_fifo_fg
   generic map(
         -- for first word fall through FIFO below two parameters setting is must please dont change
 	C_PRELOAD_LATENCY  => 0                  ,-- this is newly added and async_fifo_fg is referred from proc common v4_0
@@ -19581,7 +19644,8 @@ RX_FIFO_II: entity lib_fifo_v1_0_7.async_fifo_fg --axi_quad_spi_v3_2_10_0.async_
         C_WR_ACK_LOW       => 0                  , -- : integer := 0 ;
         C_WR_ERR_LOW       => 0                  , -- : integer := 0
         C_ENABLE_RLOCS     => 0                  , -- : integer := 0 ;  -- not supported in FG
-        C_USE_BLOCKMEM     => 0                    -- : integer := 1 ;  -- 0 = distributed RAM, 1 = BRAM
+        C_USE_BLOCKMEM     => 0                  , -- : integer := 1 ;  -- 0 = distributed RAM, 1 = BRAM
+        C_XPM_FIFO         => 1                    -- : integer := 1 ;
     )
   port map(
         Din                => Data_To_Rx_FIFO           , -- : in std_logic_vector(C_DATA_WIDTH-1 downto 0) := (others => '0');
@@ -19594,9 +19658,9 @@ RX_FIFO_II: entity lib_fifo_v1_0_7.async_fifo_fg --axi_quad_spi_v3_2_10_0.async_
         Rd_clk             => Bus2IP_Clk                  , -- : in std_logic := '1';
         Rd_ack             => Rx_FIFO_rd_ack              , -- : out std_logic;
         ------
-        Full               => Rx_FIFO_Full_Fifo_org           , -- : out std_logic;
+        Full               => open, --Rx_FIFO_Full_Fifo_org           , -- : out std_logic;
         Empty              => Rx_FIFO_Empty               , -- : out std_logic;
-        Almost_full        => Rx_FIFO_almost_Full         , -- : out std_logic;
+        Almost_full        => Rx_FIFO_Full_Fifo_org, --Rx_FIFO_almost_Full         , -- : out std_logic;
         Almost_empty       => Rx_FIFO_almost_Empty        , -- : out std_logic;
         Rd_count           => Rx_FIFO_occ_Reversed        , -- : out std_logic_vector(C_RD_COUNT_WIDTH-1 downto 0);
         ------
@@ -19668,7 +19732,7 @@ begin
                  Rx_FIFO_Full_Fifo_d1_sig   <= '0';
              elsif(IP2Bus_RdAck_receive_enable = '1' and Rx_FIFO_Full_Fifo_d1_synced = '1')then
                  Rx_FIFO_Full_Fifo_d1_sig   <= '0';
-             elsif(Rx_FIFO_Full_Fifo_pos_flag = '1') then
+             elsif(Rx_FIFO_Full_Fifo_pos_flag = '1'  and Rx_FIFO_Empty = '0') then
                  Rx_FIFO_Full_Fifo_d1_sig <= '1';
          end if;
      end if;
@@ -19696,7 +19760,7 @@ end process RX_FULL_GEN_PROCESS;
         scndry_out           => Rx_FIFO_Full_Fifo_d1_synced 
        );
 
- RX_FIFO_FULL_CNTR_I : entity axi_quad_spi_v3_2_10.counter_f
+ RX_FIFO_FULL_CNTR_I : entity axi_quad_spi_v3_2_16.counter_f
       generic map(
         C_NUM_BITS    =>  RX_FIFO_CNTR_WIDTH,
         C_FAMILY      =>  "nofamily"
@@ -19866,10 +19930,11 @@ end process RX_FULL_GEN_PROCESS;
   TR_EN_P:process(wr_ce_reduce_ack_gen,
                   local_tr_en,
                   burst_tr,
-                  WVALID)is
+                  WREADY)is
   begin
        if(burst_tr = '1') then
-           IP2Bus_WrAck_transmit_enable <= local_tr_en and WVALID; -- Bus2IP_WrCE_d1 and (not Tx_FIFO_Full); --local_tr_en;
+           --IP2Bus_WrAck_transmit_enable <= local_tr_en and WVALID; -- Bus2IP_WrCE_d1 and (not Tx_FIFO_Full); --local_tr_en;
+           IP2Bus_WrAck_transmit_enable <= local_tr_en and WREADY; -- Bus2IP_WrCE_d1 and (not Tx_FIFO_Full); --local_tr_en;
        else
            IP2Bus_WrAck_transmit_enable <= local_tr_en and wr_ce_reduce_ack_gen;
        end if;
@@ -19879,7 +19944,7 @@ end process RX_FULL_GEN_PROCESS;
 Data_To_TxFIFO <= Bus2IP_Data((C_S_AXI_DATA_WIDTH-C_NUM_TRANSFER_BITS) to(C_S_AXI_DATA_WIDTH-1));-- after 100 ps;
 -- Transmit FIFO Logic
 tx_fifo_reset <= reset2ip_reset_int or reset_TxFIFO_ptr_int;
-TX_FIFO_II: entity lib_fifo_v1_0_7.async_fifo_fg -- entity axi_quad_spi_v3_2_10_0.async_fifo_fg -- lib_fifo_v1_0_7_4.async_fifo_fg
+TX_FIFO_II: entity lib_fifo_v1_0_11.async_fifo_fg -- entity axi_quad_spi_v3_2_16_0.async_fifo_fg -- lib_fifo_v1_0_11_4.async_fifo_fg
   generic map
       (
         -- for first word fall through FIFO below two parameters setting is must please dont change
@@ -19906,7 +19971,8 @@ TX_FIFO_II: entity lib_fifo_v1_0_7.async_fifo_fg -- entity axi_quad_spi_v3_2_10_
         C_WR_ACK_LOW       => 0                  , -- : integer := 0 ;
         C_WR_ERR_LOW       => 0                  , -- : integer := 0
         C_ENABLE_RLOCS     => 0                  , -- : integer := 0 ;  -- not supported in FG
-        C_USE_BLOCKMEM     => 0                    -- : integer := 1 ;  -- 0 = distributed RAM, 1 = BRAM
+        C_USE_BLOCKMEM     => 0                  , -- : integer := 1 ;  -- 0 = distributed RAM, 1 = BRAM
+        C_XPM_FIFO         => 1                    -- : integer := 1 ;
       )
   port map
       (
@@ -19922,9 +19988,9 @@ TX_FIFO_II: entity lib_fifo_v1_0_7.async_fifo_fg -- entity axi_quad_spi_v3_2_10_
         Rd_en              => SPIXfer_done_rd_tx_en            , -- : in std_logic := '0';
         Rd_ack             => Tx_FIFO_rd_ack_open         , -- : out std_logic;
         ------
-        Full               => Tx_FIFO_Full                , -- : out std_logic;
+        Full               => open, --Tx_FIFO_Full                , -- : out std_logic;
         Empty              => Tx_FIFO_Empty               , -- : out std_logic;
-        Almost_full        => Tx_FIFO_almost_Full         , -- : out std_logic;
+        Almost_full        => Tx_FIFO_Full         , -- : out std_logic;
         Almost_empty       => Tx_FIFO_almost_Empty        , -- : out std_logic;
         Rd_count           => open        , -- : out std_logic_vector(C_RD_COUNT_WIDTH-1 downto 0);
         ------
@@ -19967,7 +20033,7 @@ TX_FIFO_II: entity lib_fifo_v1_0_7.async_fifo_fg -- entity axi_quad_spi_v3_2_10_
 
     data_Exists_TxFIFO_int <= not (Tx_FIFO_Empty);
     -----------------------------------------------------------
-    TX_FIFO_EMPTY_CNTR_I : entity axi_quad_spi_v3_2_10.counter_f
+    TX_FIFO_EMPTY_CNTR_I : entity axi_quad_spi_v3_2_16.counter_f
       generic map(
         C_NUM_BITS    =>  TX_FIFO_CNTR_WIDTH,
         C_FAMILY      =>  "nofamily"
@@ -20101,7 +20167,7 @@ TX_FIFO_II: entity lib_fifo_v1_0_7.async_fifo_fg -- entity axi_quad_spi_v3_2_10_
 -- I_FIFO_IF_MODULE : INSTANTIATE FIFO INTERFACE MODULE
 -------------------------------------------------------------------------------
 Rx_FIFO_Full_Fifo_d1_synced_i <= Rx_FIFO_Full_Fifo_d1_synced and (not Rx_FIFO_Empty); 
-  FIFO_IF_MODULE_I: entity axi_quad_spi_v3_2_10.qspi_fifo_ifmodule
+  FIFO_IF_MODULE_I: entity axi_quad_spi_v3_2_16.qspi_fifo_ifmodule
         generic map
              (
               C_NUM_TRANSFER_BITS   => C_NUM_TRANSFER_BITS
@@ -20139,15 +20205,17 @@ Rx_FIFO_Full_Fifo_d1_synced_i <= Rx_FIFO_Full_Fifo_d1_synced and (not Rx_FIFO_Em
               DTR_Underrun_strobe   => dtr_Underrun_strobe_int,                 -- out
               ---------------------
               SPIXfer_done          => spiXfer_done_to_axi_1, -- spiXfer_done_int, -- in
-              rready                => rready
+              rready                => rready,
+              wready                => WREADY
              -- DRR_Overrun_reg       => drr_Overrun_int                          -- out
         );
 
 -------------------------------------------------------------------------------
 -- TX_OCCUPANCY_I : INSTANTIATE TRANSMIT OCCUPANCY REGISTER
 -------------------------------------------------------------------------------
-
-     TX_OCCUPANCY_I: entity axi_quad_spi_v3_2_10.qspi_occupancy_reg
+Tx_FIFO_occ_Reversed_oneless <= Tx_FIFO_occ_Reversed - 1;
+Tx_FIFO_occ_Reversed_int <= (others => '0') when (or_reduce(Tx_FIFO_occ_Reversed) = '0') else Tx_FIFO_occ_Reversed_oneless(C_OCCUPANCY_NUM_BITS-1 downto 0);
+     TX_OCCUPANCY_I: entity axi_quad_spi_v3_2_16.qspi_occupancy_reg
         generic map
              (
               C_OCCUPANCY_NUM_BITS => C_OCCUPANCY_NUM_BITS
@@ -20158,15 +20226,17 @@ Rx_FIFO_Full_Fifo_d1_synced_i <= Rx_FIFO_Full_Fifo_d1_synced and (not Rx_FIFO_Em
               Bus2IP_OCC_REG_RdCE      => Bus2IP_RdCE(SPITFOR),                 -- in
 
           --FIFO port
-              IP2Reg_OCC_Data          => tx_fifo_count, -- tx_FIFO_occ_Reversed,             -- in vec
+              --IP2Reg_OCC_Data          => tx_fifo_count, -- tx_FIFO_occ_Reversed,             -- in vec
+              IP2Reg_OCC_Data          => Tx_FIFO_occ_Reversed_int,             -- in vec
               IP2Bus_OCC_REG_Data      => IP2Bus_Tx_FIFO_OCC_Reg_Data_int       -- out vec
              );
 
 -------------------------------------------------------------------------------
 -- RX_OCCUPANCY_I : INSTANTIATE RECEIVE OCCUPANCY REGISTER
 -------------------------------------------------------------------------------
-
-     RX_OCCUPANCY_I: entity axi_quad_spi_v3_2_10.qspi_occupancy_reg
+Rx_FIFO_occ_Reversed_oneless <= Rx_FIFO_occ_Reversed - 1;
+Rx_FIFO_occ_Reversed_int <= (others => '0') when (or_reduce(Rx_FIFO_occ_Reversed) = '0') else Rx_FIFO_occ_Reversed_oneless(C_OCCUPANCY_NUM_BITS-1 downto 0);
+     RX_OCCUPANCY_I: entity axi_quad_spi_v3_2_16.qspi_occupancy_reg
         generic map
              (
               C_OCCUPANCY_NUM_BITS => C_OCCUPANCY_NUM_BITS--,
@@ -20177,7 +20247,8 @@ Rx_FIFO_Full_Fifo_d1_synced_i <= Rx_FIFO_Full_Fifo_d1_synced and (not Rx_FIFO_Em
               Bus2IP_OCC_REG_RdCE      => Bus2IP_RdCE(SPIRFOR),                 -- in
 
           --FIFO port
-              IP2Reg_OCC_Data          => rx_fifo_count, --rx_FIFO_occ_Reversed,             -- in vec
+              --IP2Reg_OCC_Data          => rx_fifo_count, --rx_FIFO_occ_Reversed,             -- in vec
+              IP2Reg_OCC_Data          => Rx_FIFO_occ_Reversed_int,             -- in vec
               IP2Bus_OCC_REG_Data      => IP2Bus_Rx_FIFO_OCC_Reg_Data_int       -- out vec
              );
 
@@ -20230,7 +20301,7 @@ end generate DATA_STARTUP_USED;
    -----
    begin
    -----
-   QSPI_STARTUP_BLOCK_I: entity axi_quad_spi_v3_2_10.qspi_startup_block
+   QSPI_STARTUP_BLOCK_I: entity axi_quad_spi_v3_2_16.qspi_startup_block
    ---------------------
    generic map
         (
@@ -20279,7 +20350,7 @@ end generate DATA_STARTUP_USED;
    -- SPI_MODULE_I : INSTANTIATE SPI MODULE
    ----------------------------------------------------------------------------
 
-   SPI_MODULE_I: entity axi_quad_spi_v3_2_10.qspi_mode_0_module
+   SPI_MODULE_I: entity axi_quad_spi_v3_2_16.qspi_mode_0_module
    -------------
    generic map
         (
@@ -20483,7 +20554,7 @@ begin
           -----
           begin
           -----
-          QSPI_STARTUP_BLOCK_I: entity axi_quad_spi_v3_2_10.qspi_startup_block
+          QSPI_STARTUP_BLOCK_I: entity axi_quad_spi_v3_2_16.qspi_startup_block
           ---------------------
           generic map
                (
@@ -20530,7 +20601,7 @@ begin
           -------------------------------------------------------
 -- *
           -- Add instance for Look up table logic
-          SPI_MODE_1_LUT_LOGIC_I: entity axi_quad_spi_v3_2_10.qspi_look_up_logic
+          SPI_MODE_1_LUT_LOGIC_I: entity axi_quad_spi_v3_2_16.qspi_look_up_logic
           -------------
           generic map
                (
@@ -20571,7 +20642,7 @@ begin
                );
           ---------
 
-          SPI_MODE_CONTROL_LOGIC_I: entity axi_quad_spi_v3_2_10.qspi_mode_control_logic
+          SPI_MODE_CONTROL_LOGIC_I: entity axi_quad_spi_v3_2_16.qspi_mode_control_logic
           -------------
           generic map
                (
@@ -20676,7 +20747,7 @@ begin
 end generate LOGIC_FOR_MD_12_GEN;
 ------------------------------------------
 --------------------------------------------------------------------------------
- CONTROL_REG_I: entity axi_quad_spi_v3_2_10.qspi_cntrl_reg
+ CONTROL_REG_I: entity axi_quad_spi_v3_2_16.qspi_cntrl_reg
              generic map
              (
              --------------------------
@@ -20729,7 +20800,7 @@ end generate LOGIC_FOR_MD_12_GEN;
    STATUS_REG_MODE_0_GEN: if C_SPI_MODE = 0 generate
    begin
 
-       STATUS_SLAVE_SEL_REG_I: entity axi_quad_spi_v3_2_10.qspi_status_slave_sel_reg
+       STATUS_SLAVE_SEL_REG_I: entity axi_quad_spi_v3_2_16.qspi_status_slave_sel_reg
                 generic map(
                 C_SPI_NUM_BITS_REG      => C_SPI_NUM_BITS_REG            ,
                 ------------------------   ------------------------
@@ -20778,7 +20849,7 @@ end generate LOGIC_FOR_MD_12_GEN;
    STATUS_REG_MODE_12_GEN: if C_SPI_MODE /= 0 generate
    begin
 
-       STATUS_SLAVE_SEL_REG_I: entity axi_quad_spi_v3_2_10.qspi_status_slave_sel_reg
+       STATUS_SLAVE_SEL_REG_I: entity axi_quad_spi_v3_2_16.qspi_status_slave_sel_reg
                 generic map(
                 C_SPI_NUM_BITS_REG      => C_SPI_NUM_BITS_REG            ,
                 ------------------------   ------------------------
@@ -20825,7 +20896,7 @@ end generate LOGIC_FOR_MD_12_GEN;
 -------------------------------------------------------------------------------
 -- SOFT_RESET_I : INSTANTIATE SOFT RESET
 -------------------------------------------------------------------------------
-     SOFT_RESET_I: entity axi_quad_spi_v3_2_10.soft_reset
+     SOFT_RESET_I: entity axi_quad_spi_v3_2_16.soft_reset
         generic map
              (
               C_SIPIF_DWIDTH     => C_S_AXI_DATA_WIDTH,
@@ -21044,13 +21115,13 @@ library ieee;
 library axi_lite_ipif_v3_0_4;
 use axi_lite_ipif_v3_0_4.axi_lite_ipif;
 use axi_lite_ipif_v3_0_4.ipif_pkg.all;
-library lib_fifo_v1_0_7;
-    use lib_fifo_v1_0_7.async_fifo_fg;
+library lib_fifo_v1_0_11;
+    use lib_fifo_v1_0_11.async_fifo_fg;
 library lib_cdc_v1_0_2;
 	use lib_cdc_v1_0_2.cdc_sync;
 
-library axi_quad_spi_v3_2_10;
-    use axi_quad_spi_v3_2_10.all;
+library axi_quad_spi_v3_2_16;
+    use axi_quad_spi_v3_2_16.all;
 library unisim;
     use unisim.vcomponents.FDRE;
     use unisim.vcomponents.FD;
@@ -21078,6 +21149,7 @@ entity axi_qspi_xip_if is
                                                              -- in Ports as well as internal
                                                              -- functionality
        C_USE_STARTUP            : integer range 0 to 1 := 1; --
+       C_STARTUP_EXT            : integer range 0 to 1 := 1;
        C_SPI_MEMORY             : integer range 0 to 3 := 1; -- 0 - mixed mode,
                                                              -- 1 - winbond,
                                                              -- 2 - numonyx
@@ -21098,7 +21170,7 @@ entity axi_qspi_xip_if is
        --*C_S_AXI4_ADDR_WIDTH      : integer range 32 to 32 := 32;
        C_S_AXI4_ADDR_WIDTH      : integer ;-- range 32 to 32 := 32;
        C_S_AXI4_DATA_WIDTH      : integer range 32 to 32 := 32;
-       C_S_AXI4_ID_WIDTH        : integer range 1 to 16  := 4;
+       C_S_AXI4_ID_WIDTH        : integer range 1 to 32  := 4;
        -------------------------
        --*C_AXI4_BASEADDR          : std_logic_vector       := x"FFFFFFFF";
        --*C_AXI4_HIGHADDR          : std_logic_vector       := x"00000000";
@@ -21689,7 +21761,7 @@ Rx_FIFO_Full <= Rx_FIFO_Full_org and not Rx_FIFO_Empty_Synced_in_SPI_domain;
 valid_decode <= S_AXI4_ARVALID and xip_pr_state_idle;
 reset_inversion <= not S_AXI4_ARESET;
 -- address decoder and CS generation in AXI interface
-I_DECODER : entity axi_quad_spi_v3_2_10.qspi_address_decoder
+I_DECODER : entity axi_quad_spi_v3_2_16.qspi_address_decoder
     generic map
     (
      C_BUS_AWIDTH          => XIP_ADDR_BITS, -- C_S_AXI4_ADDR_WIDTH,
@@ -21893,7 +21965,7 @@ last_bt_one_data_cmb <= not(or_reduce(dtr_length(C_NUM_TRANSFER_BITS-1 downto 1)
                                                  S_AXI4_RREADY;
 last_data_cmb        <= not(or_reduce(dtr_length(C_NUM_TRANSFER_BITS-1 downto 0)));
 
-      RX_FIFO_FULL_CNTR_I : entity axi_quad_spi_v3_2_10.counter_f
+      RX_FIFO_FULL_CNTR_I : entity axi_quad_spi_v3_2_16.counter_f
       generic map(
         C_NUM_BITS    =>  RX_FIFO_CNTR_WIDTH,
         C_FAMILY      =>  "nofamily"
@@ -22502,7 +22574,7 @@ end generate AXI_32_BIT_ADDR_STORE_GEN;
 
 
 -------------------------------------------------------------------------------
-XIP_RECEIVE_FIFO_II: entity lib_fifo_v1_0_7.async_fifo_fg
+XIP_RECEIVE_FIFO_II: entity lib_fifo_v1_0_11.async_fifo_fg
   generic map(
         -- 3/30/2013 starts
         C_PRELOAD_LATENCY  => 0                  ,-- this is newly added and async_fifo_fg is referred from proc common v4_0
@@ -22530,7 +22602,8 @@ XIP_RECEIVE_FIFO_II: entity lib_fifo_v1_0_7.async_fifo_fg
         C_WR_ACK_LOW       => 0                   , -- : integer := 0 ;
         C_WR_ERR_LOW       => 0                   , -- : integer := 0
         C_ENABLE_RLOCS     => 0                   , -- : integer := 0 ;  -- not supported in FG
-        C_USE_BLOCKMEM     => 0                     -- : integer := 1 ;  -- 0 = distributed RAM, 1 = BRAM
+        C_USE_BLOCKMEM     => 0                   , -- : integer := 1 ;  -- 0 = distributed RAM, 1 = BRAM
+        C_XPM_FIFO         => 1                    -- : integer := 1 ;
     )
   port map(
         Dout               => Data_From_Rx_FIFO           , -- : out std_logic_vector(C_DATA_WIDTH-1 downto 0);
@@ -22577,7 +22650,7 @@ type_of_burst_frm_axi_clk     <= type_of_burst; -- 1 bit signal take MSB only to
 axi_length_frm_axi_clk        <= axi_length;    -- 8 bit used for WRAP transfer
 dtr_length_frm_axi_clk        <= dtr_length;    -- 8 bit used for internbal counter
 
-XIP_CLK_DOMAIN_SIGNALS:entity axi_quad_spi_v3_2_10.xip_cross_clk_sync
+XIP_CLK_DOMAIN_SIGNALS:entity axi_quad_spi_v3_2_16.xip_cross_clk_sync
      generic map(
         C_S_AXI4_DATA_WIDTH     => C_S_AXI4_DATA_WIDTH ,
         Async_Clk               => Async_Clk          ,
@@ -23783,10 +23856,10 @@ begin
          -- NM 000 000 0100 0
          four_byte_en_done <= '1';
          wb_hpm_done <= '1'; 
-         DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK, wb_hpm_done, wr_en_done_reg ) is -- wb_hpm_done, wr_en_done_reg) is
+         DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK) is --, wb_hpm_done, wr_en_done_reg ) is -- wb_hpm_done, wr_en_done_reg) is
          variable temp: std_logic_vector(1 downto 0);
          begin
-                temp := wb_hpm_done & wr_en_done_reg;
+             --   temp := wb_hpm_done & wr_en_done_reg;
                 if(EXT_SPI_CLK'event and EXT_SPI_CLK = '1') then
                         --case wb_hpm_done is
                         --    -- when "00"|"01" => -- write enable is under process
@@ -24013,10 +24086,10 @@ begin
                 end case;
            end process NM_4_BYTE_ADDR_EN_PROCESS;
            --------------------------------------
-             DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK, wb_hpm_done, wr_en_done_reg) is -- wb_hpm_done, wr_en_done_reg) is
+             DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK) is --, wb_hpm_done, wr_en_done_reg) is -- wb_hpm_done, wr_en_done_reg) is
              variable temp: std_logic_vector(1 downto 0);
              begin
-                   temp := wb_hpm_done & wr_en_done_reg;
+             --      temp := wb_hpm_done & wr_en_done_reg;
                    if(EXT_SPI_CLK'event and EXT_SPI_CLK = '1') then
                            case wb_hpm_done is
                                -- when "00"|"01" => -- write enable is under process
@@ -24292,10 +24365,10 @@ begin
          -- NM 000 000 0100 0
          four_byte_en_done <= '1';
          wb_hpm_done <= '1'; 
-         DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK) is -- wb_hpm_done, wr_en_done_reg) is
+         DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK) is --, wb_hpm_done, wr_en_done_reg) is
          variable temp: std_logic_vector(1 downto 0);
          begin
-                temp := wb_hpm_done & wr_en_done_reg;
+        --        temp := wb_hpm_done & wr_en_done_reg;
                 if(EXT_SPI_CLK'event and EXT_SPI_CLK = '1') then
                         --case wb_hpm_done is
                         --    -- when "00"|"01" => -- write enable is under process
@@ -24525,7 +24598,7 @@ begin
              DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK) is -- wb_hpm_done, wr_en_done_reg) is
              variable temp: std_logic_vector(1 downto 0);
              begin
-                   temp := wb_hpm_done & wr_en_done_reg;
+               --    temp := wb_hpm_done & wr_en_done_reg;
                    if(EXT_SPI_CLK'event and EXT_SPI_CLK = '1') then
                            case wb_hpm_done is
                                -- when "00"|"01" => -- write enable is under process
@@ -25192,10 +25265,10 @@ begin
                     end case;
                end process NM_4_BYTE_ADDR_EN_PROCESS;
                --------------------------------------
-         DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK, wb_hpm_done, wr_en_done_reg) is -- wb_hpm_done, wr_en_done_reg) is
+         DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK) is --, wb_hpm_done, wr_en_done_reg) is -- wb_hpm_done, wr_en_done_reg) is
          variable temp: std_logic_vector(1 downto 0);
          begin
-                temp := wb_hpm_done & wr_en_done_reg;
+             --   temp := wb_hpm_done & wr_en_done_reg;
                 if(EXT_SPI_CLK'event and EXT_SPI_CLK = '1') then
                         case wb_hpm_done is
                             -- when "00"|"01" => -- write enable is under process
@@ -25710,10 +25783,10 @@ begin
                     end case;
                end process NM_4_BYTE_ADDR_EN_PROCESS;
                --------------------------------------
-         DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK) is -- wb_hpm_done, wr_en_done_reg) is
+         DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK) is --, wb_hpm_done, wr_en_done_reg) is
          variable temp: std_logic_vector(1 downto 0);
          begin
-                temp := wb_hpm_done & wr_en_done_reg;
+             --   temp := wb_hpm_done & wr_en_done_reg;
                 if(EXT_SPI_CLK'event and EXT_SPI_CLK = '1') then
                         case wb_hpm_done is
                             -- when "00"|"01" => -- write enable is under process
@@ -26274,10 +26347,10 @@ begin
            SPI_cmd <= "11101011"; -- QIOFR
                   -- 0101 1 100100 0
            wb_hpm_done <= '1';
-         DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK, wb_hpm_done, wr_en_done_reg) is -- wb_hpm_done, wr_en_done_reg) is
+         DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK) is --, wb_hpm_done, wr_en_done_reg) is -- wb_hpm_done, wr_en_done_reg) is
          variable temp: std_logic_vector(1 downto 0);
          begin
-                temp := wb_hpm_done & wr_en_done_reg;
+            --    temp := wb_hpm_done & wr_en_done_reg;
                 if(EXT_SPI_CLK'event and EXT_SPI_CLK = '1') then
                         case wb_hpm_done is
                             -- when "00"|"01" => -- write enable is under process
@@ -26504,10 +26577,10 @@ begin
                  end case;
             end process NM_4_BYTE_ADDR_EN_PROCESS;
             --------------------------------------
-         DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK, wb_hpm_done, wr_en_done_reg) is -- wb_hpm_done, wr_en_done_reg) is
+         DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK) is --, wb_hpm_done, wr_en_done_reg) is -- wb_hpm_done, wr_en_done_reg) is
          variable temp: std_logic_vector(1 downto 0);
          begin
-                temp := wb_hpm_done & wr_en_done_reg;
+           --     temp := wb_hpm_done & wr_en_done_reg;
                 if(EXT_SPI_CLK'event and EXT_SPI_CLK = '1') then
                         case wb_hpm_done is
                             -- when "00"|"01" => -- write enable is under process
@@ -26785,7 +26858,7 @@ begin
          DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK) is -- wb_hpm_done, wr_en_done_reg) is
          variable temp: std_logic_vector(1 downto 0);
          begin
-                temp := wb_hpm_done & wr_en_done_reg;
+          --      temp := wb_hpm_done & wr_en_done_reg;
                 if(EXT_SPI_CLK'event and EXT_SPI_CLK = '1') then
                         case wb_hpm_done is
                             -- when "00"|"01" => -- write enable is under process
@@ -27015,7 +27088,7 @@ begin
          DRIVE_CONTROL_SIG_P: process(EXT_SPI_CLK) is -- wb_hpm_done, wr_en_done_reg) is
          variable temp: std_logic_vector(1 downto 0);
          begin
-                temp := wb_hpm_done & wr_en_done_reg;
+             --   temp := wb_hpm_done & wr_en_done_reg;
                 if(EXT_SPI_CLK'event and EXT_SPI_CLK = '1') then
                         case wb_hpm_done is
                             -- when "00"|"01" => -- write enable is under process
@@ -28539,7 +28612,8 @@ QSPI_CNTRL_PROCESS: process(
                             ---------------------
                             wrap_around         ,
                             transfer_start      ,
-                            wrap_ack_1
+                            wrap_ack_1          ,
+                            Quad_Phase
                     )is
 -----
 begin
@@ -29939,7 +30013,7 @@ end generate SS_O_32_BIT_ADDR_GEN;
 ----------------------------------
     no_slave_selected <= and_reduce(SS_to_spi_clk((C_NUM_SS_BITS-1) downto 0));
     -------------------------------------------------------------------------------
-    SCK_O_NQ_4_NO_STARTUP_USED: if (C_USE_STARTUP = 0) generate
+    SCK_O_NQ_4_NO_STARTUP_USED: if (C_USE_STARTUP = 0 and C_STARTUP_EXT = 0) generate
     ----------------
     attribute IOB                         : string;
     attribute IOB of SCK_O_NE_4_FDRE_INST : label is "true";
@@ -29991,7 +30065,7 @@ end generate SS_O_32_BIT_ADDR_GEN;
     end generate SCK_O_NQ_4_NO_STARTUP_USED;
     -------------------------------
 
-    SCK_O_NQ_4_STARTUP_USED: if (C_USE_STARTUP = 1) generate
+    SCK_O_NQ_4_STARTUP_USED: if (C_USE_STARTUP = 1 or C_STARTUP_EXT = 1) generate
     -------------
     begin
     -----
@@ -30145,8 +30219,8 @@ library lib_pkg_v1_0_2;
 
 library interrupt_control_v3_1_4;
 
-library axi_quad_spi_v3_2_10;
-    use axi_quad_spi_v3_2_10.all;
+library axi_quad_spi_v3_2_16;
+    use axi_quad_spi_v3_2_16.all;
 
 entity axi_qspi_enhanced_mode is
      generic (
@@ -30169,7 +30243,7 @@ entity axi_qspi_enhanced_mode is
       --*C_S_AXI4_ADDR_WIDTH      : integer range 32 to 32 := 32;
       C_S_AXI4_ADDR_WIDTH      : integer range 24 to 24 := 24;
       C_S_AXI4_DATA_WIDTH      : integer range 32 to 32 := 32;
-      C_S_AXI4_ID_WIDTH        : integer range 1 to 16  := 4;
+      C_S_AXI4_ID_WIDTH        : integer range 1 to 32  := 4;
       -------------------------
       --C_AXI4_BASEADDR          : std_logic_vector       := x"FFFFFFFF";
       --C_AXI4_HIGHADDR          : std_logic_vector       := x"00000000";
@@ -30269,6 +30343,7 @@ entity axi_qspi_enhanced_mode is
      IP2Bus_WrAck        : in  std_logic;
      IP2Bus_RdAck        : in  std_logic;
      IP2Bus_Error        : in  std_logic;
+	TX_Fifo_full_indication : in std_logic;
      ---------------------------------
      burst_tr            : out std_logic;
      rready              : out std_logic
@@ -30356,6 +30431,7 @@ attribute DowngradeIPIdentifiedWarnings of imp : architecture is "yes";
  signal axi_burst_reg            : std_logic_vector(1 downto 0);
  signal length_cntr              : std_logic_vector(7 downto 0);
  signal last_data_cmb            : std_logic;
+ signal last_data_cmb_w            : std_logic;
  signal last_bt_one_data_cmb            : std_logic;
  signal last_data_acked          : std_logic;
  signal pr_state_idle            : std_logic;
@@ -30377,6 +30453,7 @@ attribute DowngradeIPIdentifiedWarnings of imp : architecture is "yes";
  signal rst_en : std_logic;
  signal s_axi_rvalid_cmb, last_data, burst_tr_i,rready_i, store_data : std_logic;
  signal Bus2IP_Reset_i : std_logic;
+ signal s_axi4_wready_i : std_logic;
  -----
  begin
  -----
@@ -30486,8 +30563,22 @@ S_AXI_WREADY_I_P : process (S_AXI4_ACLK) is
       end if;
     end if;
 end process S_AXI_WREADY_I_P;
+
+ AXI_WREADY_SM:process(
+                                  axi_full_sm_ps        ,
+                                  s_axi_wready_i        ,
+                                  TX_Fifo_full_indication
+                                  )is
+begin
+	if (axi_full_sm_ps = AXI_WR) then
+		S_AXI4_WREADY_i <= (not TX_Fifo_full_indication);
+	else
+		S_AXI4_WREADY_i	<= s_axi_wready_i;
+	end if;
+end process AXI_WREADY_SM;
+
 -------------------------------
-S_AXI4_WREADY <= s_axi_wready_i;
+S_AXI4_WREADY <= s_axi4_wready_i;
 --------------------------------
 -------------------------------------------------------------------------------
 -- REG_BID_P,REG_RID_P: Below process makes the RID and BID '0' at POR and
@@ -30606,14 +30697,19 @@ begin
     if(S_AXI4_ACLK'event and S_AXI4_ACLK='1')then
         if (S_AXI4_ARESETN = ACTIVE_LOW_RESET) then
             length_cntr <= (others => '0');
+            last_data_cmb_w <= '0';
         elsif((store_axi_signal_cmb = '1'))then
             length_cntr <= axi_length_cmb;
-        elsif (wready_cmb = '1' and S_AXI4_WVALID = '1') or
+            last_data_cmb_w <= '0';
+        elsif (S_AXI4_WREADY_i = '1' and S_AXI4_WVALID = '1') or
               (S_AXI4_RREADY = '1' and s_axi_rvalid_i = '1') then   -- burst length error
-            length_cntr <= length_cntr - '1';
+        	    length_cntr <= length_cntr - '1';
+	            last_data_cmb_w <= '1';
         end if;
     end if;
 end process LENGTH_CNTR_P;
+
+
 --------------------------
 --last_data_cmb    <= or_reduce(length_cntr(7 downto 1)) and length_cntr(1);
 rready <= rready_i;
@@ -30751,6 +30847,8 @@ end process STORE_SIGNALS_P;
                                   length_error          ,
                                   IP2Bus_WrAck          ,
                                   last_data_cmb         ,
+                                  TX_Fifo_full_indication         ,
+				  S_AXI4_WREADY_i	,
                                   IP2Bus_RdAck          ,
                                   IP2Bus_Error          ,
                                   burst_transfer_cmb    ,
@@ -30790,6 +30888,7 @@ store_data <= '0';
                                    if(burst_transfer_cmb = '1') then
                                        awready_cmb <= '1';
                                        wready_cmb  <= '1';
+                                       --wready_cmb  <= TX_Fifo_full_indication;
                                        axi_full_sm_ns <= AXI_WR;
                                    else
                                        axi_full_sm_ns <= AXI_SINGLE_WR;
@@ -30857,7 +30956,8 @@ store_data <= '0';
                                    rnw_cmb <= rnw_reg;
      when AXI_WR                => --if(IP2Bus_WrAck = '1')then
                                       wready_cmb <= '1';--IP2Bus_WrAck;
-                                      if(last_data_cmb = '1') then
+                                     -- wready_cmb <= TX_Fifo_full_indication;
+                                      if((last_data_cmb = '1') and (S_AXI4_WREADY_i = '1')) then
                                           wready_cmb <= '0';
                                           temp_i <= '1';--IP2Bus_WrAck;
                                           rst_en <= '1';--IP2Bus_WrAck;
@@ -30913,7 +31013,7 @@ store_data <= '0';
   -- AXI Transaction Controller signals registered
 -------------------------------------------------------------------------------
 
-I_DECODER : entity axi_quad_spi_v3_2_10.qspi_address_decoder
+I_DECODER : entity axi_quad_spi_v3_2_16.qspi_address_decoder
     generic map
     (
      C_BUS_AWIDTH          => C_NUM_DECODE_BITS, -- C_S_AXI4_ADDR_WIDTH,
@@ -31043,8 +31143,8 @@ use axi_lite_ipif_v3_0_4.axi_lite_ipif;
 use axi_lite_ipif_v3_0_4.ipif_pkg.all;
 
 
-library axi_quad_spi_v3_2_10;
-    use axi_quad_spi_v3_2_10.all;
+library axi_quad_spi_v3_2_16;
+    use axi_quad_spi_v3_2_16.all;
 -------------------------------------------------------------------------------
 
 entity axi_quad_spi_top is
@@ -31092,7 +31192,7 @@ entity axi_quad_spi_top is
        -- AXI4 Full Interface Parameters *as max 24 bits of address are supported on SPI interface, only 24 address bits are used
        C_S_AXI4_ADDR_WIDTH      : integer                     ;--range 24 to 24 := 24;
        C_S_AXI4_DATA_WIDTH      : integer range 32 to 32 := 32;
-       C_S_AXI4_ID_WIDTH        : integer range 1 to 16  := 4 ;
+       C_S_AXI4_ID_WIDTH        : integer range 1 to 32  := 4 ;
        C_SHARED_STARTUP    : integer range 0 to 1 := 0;
        -------------------------
        -- To FIX CR# 685366, below lines are added again in RTL (Vivado Requirement), but these parameters are not used in the core RTL
@@ -31602,7 +31702,8 @@ signal fcsbts_int  : std_logic;
 signal startup_di : std_logic_vector(1 downto 0);   -- output
 signal startup_do : std_logic_vector(1 downto 0) := (others => '1');   -- output
 signal startup_dts : std_logic_vector(1 downto 0) := (others => '0');   -- output
-
+signal TX_Fifo_full_indication : std_logic;
+signal WREADY : std_logic;
 -----
 begin
 -----
@@ -31870,7 +31971,7 @@ begin
      --    -- Instansiating the SPI core
      --    ----------------------------------------------------------------------
 
-     QSPI_CORE_INTERFACE_I : entity axi_quad_spi_v3_2_10.qspi_core_interface
+     QSPI_CORE_INTERFACE_I : entity axi_quad_spi_v3_2_16.qspi_core_interface
      generic map
      (
       ------------------------------------------------
@@ -31935,6 +32036,8 @@ begin
       burst_tr                  => burst_tr_int,
       rready                    => '0',
       WVALID                    => '0',
+      WREADY			=> '0',
+      TX_Fifo_full_indication	=> TX_Fifo_full_indication, 
       ---------------------------------------------------
       --SPI Ports
       IO0_I                     => io0_i_sync,-- mosi
@@ -31991,7 +32094,7 @@ QSPI_ENHANCED_MD_GEN: if  C_TYPE_OF_AXI4_INTERFACE = 1 and C_XIP_MODE = 0 genera
 begin
 -----
      -- AXI_QUAD_SPI_I: core instance
-     QSPI_ENHANCED_MD_IPIF_I : entity axi_quad_spi_v3_2_10.axi_qspi_enhanced_mode
+     QSPI_ENHANCED_MD_IPIF_I : entity axi_quad_spi_v3_2_16.axi_qspi_enhanced_mode
      generic map(
       -- General Parameters
       C_FAMILY                 => C_FAMILY                , -- : string               := "virtex7";
@@ -32054,7 +32157,8 @@ begin
      S_AXI4_WSTRB   => s_axi4_wstrb , -- : in  std_logic_vector(((C_S_AXI4_DATA_WIDTH/8)-1) downto 0);
      S_AXI4_WLAST   => s_axi4_wlast , -- : in  std_logic;
      S_AXI4_WVALID  => s_axi4_wvalid, -- : in  std_logic;
-     S_AXI4_WREADY  => s_axi4_wready, -- : out std_logic;
+     --S_AXI4_WREADY  => s_axi4_wready, -- : out std_logic;
+     S_AXI4_WREADY  => WREADY, -- : out std_logic;
      -------------------------------------------
      -- AXI4 Full Write response channel Signals
      -------------------------------------------
@@ -32101,6 +32205,7 @@ begin
      IP2Bus_WrAck              => ip2bus_wrack_int,      -- in
      IP2Bus_RdAck              => ip2bus_rdack_int,      -- in
      IP2Bus_Error              => ip2bus_error_int,      -- in
+     TX_Fifo_full_indication	=> TX_Fifo_full_indication, 
      ----------------------------------------------------------
      burst_tr                  => burst_tr_int,          -- in
      rready                    => rready_int
@@ -32108,8 +32213,9 @@ begin
     --    ----------------------------------------------------------------------
     --    -- Instansiating the SPI core
     --    ----------------------------------------------------------------------
+s_axi4_wready <= WREADY;
 
-     QSPI_CORE_INTERFACE_I : entity axi_quad_spi_v3_2_10.qspi_core_interface
+     QSPI_CORE_INTERFACE_I : entity axi_quad_spi_v3_2_16.qspi_core_interface
      generic map
      (
       ------------------------------------------------
@@ -32174,6 +32280,8 @@ begin
       burst_tr                  => burst_tr_int,
       rready                    => rready_int,
       WVALID                    => S_AXI4_WVALID,
+      WREADY			=> WREADY,
+      TX_Fifo_full_indication	=> TX_Fifo_full_indication, 
       --SPI Ports
       IO0_I                     => io0_i_sync,-- mosi
       IO0_O                     => io0_o,
@@ -32348,7 +32456,7 @@ begin
           end if;
      end process REG_RST_FRM_IPIF;
      --------------------------------------------------------------------------
-     XIP_CR_I : entity axi_quad_spi_v3_2_10.xip_cntrl_reg
+     XIP_CR_I : entity axi_quad_spi_v3_2_16.xip_cntrl_reg
      generic map
       (
        C_XIP_SPICR_REG_WIDTH => C_XIP_SPICR_REG_WIDTH,
@@ -32430,7 +32538,7 @@ begin
      end process REG_IP2BUS_DATA_P;
      -------------------------
      --------------------------------------------------------------------------
-     XIP_SR_I : entity axi_quad_spi_v3_2_10.xip_status_reg
+     XIP_SR_I : entity axi_quad_spi_v3_2_16.xip_status_reg
      generic map
      (
       C_XIP_SPISR_REG_WIDTH => C_XIP_SPISR_REG_WIDTH,
@@ -32463,14 +32571,14 @@ begin
          end if;
     end process REG_RST4_FRM_IPIF;
     -------------------------------------------------------------------------
-    RESET_SYNC_AXI_SPI_CLK_INST:entity axi_quad_spi_v3_2_10.reset_sync_module
+    RESET_SYNC_AXI_SPI_CLK_INST:entity axi_quad_spi_v3_2_16.reset_sync_module
     port map(
               EXT_SPI_CLK        => EXT_SPI_CLK                 ,-- in std_logic;
               Soft_Reset_frm_axi => bus2ip_reset_ipif4_inverted ,-- in std_logic;
               Rst_to_spi         => Rst_to_spi_int               -- out std_logic;
     );
     --------------------------------------------------------------------------
-    AXI_QSPI_XIP_I : entity axi_quad_spi_v3_2_10.axi_qspi_xip_if
+    AXI_QSPI_XIP_I : entity axi_quad_spi_v3_2_16.axi_qspi_xip_if
     generic map
      (
       C_FAMILY                 => C_FAMILY                ,
@@ -32489,6 +32597,7 @@ begin
       -------------------------
       C_SPI_MODE               => C_SPI_MODE              ,
       C_USE_STARTUP            => C_USE_STARTUP           ,
+      C_STARTUP_EXT            => C_STARTUP_EXT           ,
       C_SPI_MEMORY             => C_SPI_MEMORY            ,
       -------------------------
       -- AXI4 Full Interface Parameters
@@ -32631,7 +32740,7 @@ begin
   -----
   begin
   -----
-  QSPI_STARTUP_BLOCK_I: entity axi_quad_spi_v3_2_10.qspi_startup_block
+  QSPI_STARTUP_BLOCK_I: entity axi_quad_spi_v3_2_16.qspi_startup_block
   ---------------------
   generic map
        (
@@ -32759,8 +32868,8 @@ use axi_lite_ipif_v3_0_4.axi_lite_ipif;
 use axi_lite_ipif_v3_0_4.ipif_pkg.all;
 
 
-library axi_quad_spi_v3_2_10;
-    use axi_quad_spi_v3_2_10.all;
+library axi_quad_spi_v3_2_16;
+    use axi_quad_spi_v3_2_16.all;
 -------------------------------------------------------------------------------
 
 entity axi_quad_spi is
@@ -32810,7 +32919,7 @@ entity axi_quad_spi is
        -- AXI4 Full Interface Parameters *as max 24 bits of address are supported on SPI interface, only 24 address bits are used
        C_S_AXI4_ADDR_WIDTH      : integer                     ;--range 24 to 24 := 24;
        C_S_AXI4_DATA_WIDTH      : integer range 32 to 32 := 32;
-       C_S_AXI4_ID_WIDTH        : integer range 1 to 16  := 4 ;
+       C_S_AXI4_ID_WIDTH        : integer range 1 to 32  := 4 ;
        C_SHARED_STARTUP    : integer range 0 to 1 := 0;
        -------------------------
        -- To FIX CR# 685366, below lines are added again in RTL (Vivado Requirement), but these parameters are not used in the core RTL
@@ -33012,7 +33121,7 @@ begin
 NO_DUAL_QUAD_MODE: if (C_DUAL_QUAD_MODE = 0) generate
 begin
  
-QSPI_NORMAL : entity axi_quad_spi_v3_2_10.axi_quad_spi_top
+QSPI_NORMAL : entity axi_quad_spi_v3_2_16.axi_quad_spi_top
     GENERIC MAP (
       Async_Clk => Async_Clk,
       C_FAMILY => C_FAMILY, 
@@ -33180,7 +33289,7 @@ to_gnd2 <= "00";
 
 
 
-QSPI_DUAL_QUAD : entity axi_quad_spi_v3_2_10.axi_quad_spi_top
+QSPI_DUAL_QUAD : entity axi_quad_spi_v3_2_16.axi_quad_spi_top
     GENERIC MAP (
       Async_Clk => Async_Clk,
       C_FAMILY => C_FAMILY, 
@@ -33337,7 +33446,7 @@ ss_1_o <= to_spi_1_ss;
 ss_1_t <= to_spi_1_ss_t;
 
 
-     MUX_DEMUX_LOGIC : entity axi_quad_spi_v3_2_10.qspi_dual_quad_mode
+     MUX_DEMUX_LOGIC : entity axi_quad_spi_v3_2_16.qspi_dual_quad_mode
      generic map(
                 C_SUB_FAMILY             => C_FAMILY,
                 ---------------------

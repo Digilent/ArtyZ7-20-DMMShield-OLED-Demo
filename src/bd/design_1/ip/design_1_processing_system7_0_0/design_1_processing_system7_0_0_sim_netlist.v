@@ -1,7 +1,7 @@
-// Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+// Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
-// Tool Version: Vivado v.2016.4 (win64) Build 1756540 Mon Jan 23 19:11:23 MST 2017
-// Date        : Fri Nov 24 13:18:47 2017
+// Tool Version: Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+// Date        : Wed Aug 29 11:58:38 2018
 // Host        : cristianf-ro running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top design_1_processing_system7_0_0 -prefix
 //               design_1_processing_system7_0_0_ design_1_processing_system7_0_0_sim_netlist.v
@@ -12,7 +12,7 @@
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "design_1_processing_system7_0_0,processing_system7_v5_5_processing_system7,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "processing_system7_v5_5_processing_system7,Vivado 2016.4" *) 
+(* CHECK_LICENSE_TYPE = "design_1_processing_system7_0_0,processing_system7_v5_5_processing_system7,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* X_CORE_INFO = "processing_system7_v5_5_processing_system7,Vivado 2018.2" *) 
 (* NotValidForBitStream *)
 module design_1_processing_system7_0_0
    (USB0_PORT_INDCTL,
@@ -110,7 +110,7 @@ module design_1_processing_system7_0_0
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWLEN" *) output [3:0]M_AXI_GP0_AWLEN;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWQOS" *) output [3:0]M_AXI_GP0_AWQOS;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI_GP0 WSTRB" *) output [3:0]M_AXI_GP0_WSTRB;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 M_AXI_GP0_ACLK CLK" *) input M_AXI_GP0_ACLK;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 M_AXI_GP0_ACLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_GP0_ACLK, ASSOCIATED_BUSIF M_AXI_GP0, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0" *) input M_AXI_GP0_ACLK;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARREADY" *) input M_AXI_GP0_ARREADY;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWREADY" *) input M_AXI_GP0_AWREADY;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI_GP0 BVALID" *) input M_AXI_GP0_BVALID;
@@ -121,9 +121,9 @@ module design_1_processing_system7_0_0
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI_GP0 RID" *) input [11:0]M_AXI_GP0_RID;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI_GP0 BRESP" *) input [1:0]M_AXI_GP0_BRESP;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI_GP0 RRESP" *) input [1:0]M_AXI_GP0_RRESP;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI_GP0 RDATA" *) input [31:0]M_AXI_GP0_RDATA;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 FCLK_CLK0 CLK" *) output FCLK_CLK0;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 FCLK_RESET0_N RST" *) output FCLK_RESET0_N;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI_GP0 RDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_GP0, SUPPORTS_NARROW_BURST 0, NUM_WRITE_OUTSTANDING 8, NUM_READ_OUTSTANDING 8, DATA_WIDTH 32, PROTOCOL AXI3, FREQ_HZ 100000000, ID_WIDTH 12, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, MAX_BURST_LENGTH 16, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 4, NUM_WRITE_THREADS 4, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0" *) input [31:0]M_AXI_GP0_RDATA;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 FCLK_CLK0 CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FCLK_CLK0, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0" *) output FCLK_CLK0;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 FCLK_RESET0_N RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FCLK_RESET0_N, POLARITY ACTIVE_LOW" *) output FCLK_RESET0_N;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO" *) inout [53:0]MIO;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CAS_N" *) inout DDR_CAS_n;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CKE" *) inout DDR_CKE;
@@ -141,10 +141,10 @@ module design_1_processing_system7_0_0
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR DM" *) inout [3:0]DDR_DM;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR DQ" *) inout [31:0]DDR_DQ;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR DQS_N" *) inout [3:0]DDR_DQS_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR DQS_P" *) inout [3:0]DDR_DQS;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR DQS_P" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR, CAN_DEBUG false, TIMEPERIOD_PS 1250, MEMORY_TYPE COMPONENTS, DATA_WIDTH 8, CS_ENABLED true, DATA_MASK_ENABLED true, SLOT Single, MEM_ADDR_MAP ROW_COLUMN_BANK, BURST_LENGTH 8, AXI_ARBITRATION_SCHEME TDM, CAS_LATENCY 11, CAS_WRITE_LATENCY 11" *) inout [3:0]DDR_DQS;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB" *) inout PS_SRSTB;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK" *) inout PS_CLK;
-  (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB" *) inout PS_PORB;
+  (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME FIXED_IO, CAN_DEBUG false" *) inout PS_PORB;
 
   wire [14:0]DDR_Addr;
   wire [2:0]DDR_BankAddr;
@@ -502,144 +502,6 @@ module design_1_processing_system7_0_0
   wire [7:0]NLW_inst_S_AXI_HP3_WCOUNT_UNCONNECTED;
   wire [1:0]NLW_inst_TRACE_DATA_UNCONNECTED;
   wire [1:0]NLW_inst_USB1_PORT_INDCTL_UNCONNECTED;
-PULLUP pullup_DDR_DM_2
-       (.O(DDR_DM[2]));
-PULLUP pullup_DDR_DM_3
-       (.O(DDR_DM[3]));
-PULLUP pullup_DDR_DQ_16
-       (.O(DDR_DQ[16]));
-PULLUP pullup_DDR_DQ_17
-       (.O(DDR_DQ[17]));
-PULLUP pullup_DDR_DQ_18
-       (.O(DDR_DQ[18]));
-PULLUP pullup_DDR_DQ_19
-       (.O(DDR_DQ[19]));
-PULLUP pullup_DDR_DQ_20
-       (.O(DDR_DQ[20]));
-PULLUP pullup_DDR_DQ_21
-       (.O(DDR_DQ[21]));
-PULLUP pullup_DDR_DQ_22
-       (.O(DDR_DQ[22]));
-PULLUP pullup_DDR_DQ_23
-       (.O(DDR_DQ[23]));
-PULLUP pullup_DDR_DQ_24
-       (.O(DDR_DQ[24]));
-PULLUP pullup_DDR_DQ_25
-       (.O(DDR_DQ[25]));
-PULLUP pullup_DDR_DQ_26
-       (.O(DDR_DQ[26]));
-PULLUP pullup_DDR_DQ_27
-       (.O(DDR_DQ[27]));
-PULLUP pullup_DDR_DQ_28
-       (.O(DDR_DQ[28]));
-PULLUP pullup_DDR_DQ_29
-       (.O(DDR_DQ[29]));
-PULLUP pullup_DDR_DQ_30
-       (.O(DDR_DQ[30]));
-PULLUP pullup_DDR_DQ_31
-       (.O(DDR_DQ[31]));
-PULLUP pullup_DDR_DQS_2
-       (.O(DDR_DQS[2]));
-PULLUP pullup_DDR_DQS_3
-       (.O(DDR_DQS[3]));
-PULLUP pullup_DDR_DQS_n_2
-       (.O(DDR_DQS_n[2]));
-PULLUP pullup_DDR_DQS_n_3
-       (.O(DDR_DQS_n[3]));
-PULLUP pullup_MIO_0
-       (.O(MIO[0]));
-PULLUP pullup_MIO_1
-       (.O(MIO[1]));
-PULLUP pullup_MIO_9
-       (.O(MIO[9]));
-PULLUP pullup_MIO_10
-       (.O(MIO[10]));
-PULLUP pullup_MIO_11
-       (.O(MIO[11]));
-PULLUP pullup_MIO_12
-       (.O(MIO[12]));
-PULLUP pullup_MIO_13
-       (.O(MIO[13]));
-PULLUP pullup_MIO_14
-       (.O(MIO[14]));
-PULLUP pullup_MIO_15
-       (.O(MIO[15]));
-PULLUP pullup_MIO_16
-       (.O(MIO[16]));
-PULLUP pullup_MIO_17
-       (.O(MIO[17]));
-PULLUP pullup_MIO_18
-       (.O(MIO[18]));
-PULLUP pullup_MIO_19
-       (.O(MIO[19]));
-PULLUP pullup_MIO_20
-       (.O(MIO[20]));
-PULLUP pullup_MIO_21
-       (.O(MIO[21]));
-PULLUP pullup_MIO_22
-       (.O(MIO[22]));
-PULLUP pullup_MIO_23
-       (.O(MIO[23]));
-PULLUP pullup_MIO_24
-       (.O(MIO[24]));
-PULLUP pullup_MIO_25
-       (.O(MIO[25]));
-PULLUP pullup_MIO_26
-       (.O(MIO[26]));
-PULLUP pullup_MIO_27
-       (.O(MIO[27]));
-PULLUP pullup_MIO_28
-       (.O(MIO[28]));
-PULLUP pullup_MIO_29
-       (.O(MIO[29]));
-PULLUP pullup_MIO_30
-       (.O(MIO[30]));
-PULLUP pullup_MIO_31
-       (.O(MIO[31]));
-PULLUP pullup_MIO_32
-       (.O(MIO[32]));
-PULLUP pullup_MIO_33
-       (.O(MIO[33]));
-PULLUP pullup_MIO_34
-       (.O(MIO[34]));
-PULLUP pullup_MIO_35
-       (.O(MIO[35]));
-PULLUP pullup_MIO_36
-       (.O(MIO[36]));
-PULLUP pullup_MIO_37
-       (.O(MIO[37]));
-PULLUP pullup_MIO_38
-       (.O(MIO[38]));
-PULLUP pullup_MIO_39
-       (.O(MIO[39]));
-PULLUP pullup_MIO_40
-       (.O(MIO[40]));
-PULLUP pullup_MIO_41
-       (.O(MIO[41]));
-PULLUP pullup_MIO_42
-       (.O(MIO[42]));
-PULLUP pullup_MIO_43
-       (.O(MIO[43]));
-PULLUP pullup_MIO_44
-       (.O(MIO[44]));
-PULLUP pullup_MIO_45
-       (.O(MIO[45]));
-PULLUP pullup_MIO_46
-       (.O(MIO[46]));
-PULLUP pullup_MIO_47
-       (.O(MIO[47]));
-PULLUP pullup_MIO_48
-       (.O(MIO[48]));
-PULLUP pullup_MIO_49
-       (.O(MIO[49]));
-PULLUP pullup_MIO_50
-       (.O(MIO[50]));
-PULLUP pullup_MIO_51
-       (.O(MIO[51]));
-PULLUP pullup_MIO_52
-       (.O(MIO[52]));
-PULLUP pullup_MIO_53
-       (.O(MIO[53]));
 
   (* C_DM_WIDTH = "4" *) 
   (* C_DQS_WIDTH = "4" *) 
@@ -653,8 +515,8 @@ PULLUP pullup_MIO_53
   (* C_FCLK_CLK1_BUF = "FALSE" *) 
   (* C_FCLK_CLK2_BUF = "FALSE" *) 
   (* C_FCLK_CLK3_BUF = "FALSE" *) 
-  (* C_GP0_EN_MODIFIABLE_TXN = "0" *) 
-  (* C_GP1_EN_MODIFIABLE_TXN = "0" *) 
+  (* C_GP0_EN_MODIFIABLE_TXN = "1" *) 
+  (* C_GP1_EN_MODIFIABLE_TXN = "1" *) 
   (* C_INCLUDE_ACP_TRANS_CHECK = "0" *) 
   (* C_INCLUDE_TRACE_BUFFER = "0" *) 
   (* C_IRQ_F2P_MODE = "DIRECT" *) 
@@ -1391,7 +1253,7 @@ endmodule
 (* C_EMIO_GPIO_WIDTH = "64" *) (* C_EN_EMIO_ENET0 = "0" *) (* C_EN_EMIO_ENET1 = "0" *) 
 (* C_EN_EMIO_PJTAG = "0" *) (* C_EN_EMIO_TRACE = "0" *) (* C_FCLK_CLK0_BUF = "TRUE" *) 
 (* C_FCLK_CLK1_BUF = "FALSE" *) (* C_FCLK_CLK2_BUF = "FALSE" *) (* C_FCLK_CLK3_BUF = "FALSE" *) 
-(* C_GP0_EN_MODIFIABLE_TXN = "0" *) (* C_GP1_EN_MODIFIABLE_TXN = "0" *) (* C_INCLUDE_ACP_TRANS_CHECK = "0" *) 
+(* C_GP0_EN_MODIFIABLE_TXN = "1" *) (* C_GP1_EN_MODIFIABLE_TXN = "1" *) (* C_INCLUDE_ACP_TRANS_CHECK = "0" *) 
 (* C_INCLUDE_TRACE_BUFFER = "0" *) (* C_IRQ_F2P_MODE = "DIRECT" *) (* C_MIO_PRIMITIVE = "54" *) 
 (* C_M_AXI_GP0_ENABLE_STATIC_REMAP = "0" *) (* C_M_AXI_GP0_ID_WIDTH = "12" *) (* C_M_AXI_GP0_THREAD_ID_WIDTH = "12" *) 
 (* C_M_AXI_GP1_ENABLE_STATIC_REMAP = "0" *) (* C_M_AXI_GP1_ID_WIDTH = "12" *) (* C_M_AXI_GP1_THREAD_ID_WIDTH = "12" *) 
@@ -2780,6 +2642,7 @@ module design_1_processing_system7_0_0_processing_system7_v5_5_processing_system
   inout PS_PORB;
 
   wire \<const0> ;
+  wire \<const1> ;
   wire CAN0_PHY_RX;
   wire CAN0_PHY_TX;
   wire CAN1_PHY_RX;
@@ -2964,7 +2827,7 @@ module design_1_processing_system7_0_0_processing_system7_v5_5_processing_system
   wire M_AXI_GP0_ACLK;
   wire [31:0]M_AXI_GP0_ARADDR;
   wire [1:0]M_AXI_GP0_ARBURST;
-  wire [3:0]M_AXI_GP0_ARCACHE;
+  wire [3:0]\^M_AXI_GP0_ARCACHE ;
   wire M_AXI_GP0_ARESETN;
   wire [11:0]M_AXI_GP0_ARID;
   wire [3:0]M_AXI_GP0_ARLEN;
@@ -2976,7 +2839,7 @@ module design_1_processing_system7_0_0_processing_system7_v5_5_processing_system
   wire M_AXI_GP0_ARVALID;
   wire [31:0]M_AXI_GP0_AWADDR;
   wire [1:0]M_AXI_GP0_AWBURST;
-  wire [3:0]M_AXI_GP0_AWCACHE;
+  wire [3:0]\^M_AXI_GP0_AWCACHE ;
   wire [11:0]M_AXI_GP0_AWID;
   wire [3:0]M_AXI_GP0_AWLEN;
   wire [1:0]M_AXI_GP0_AWLOCK;
@@ -3004,7 +2867,7 @@ module design_1_processing_system7_0_0_processing_system7_v5_5_processing_system
   wire M_AXI_GP1_ACLK;
   wire [31:0]M_AXI_GP1_ARADDR;
   wire [1:0]M_AXI_GP1_ARBURST;
-  wire [3:0]M_AXI_GP1_ARCACHE;
+  wire [3:0]\^M_AXI_GP1_ARCACHE ;
   wire M_AXI_GP1_ARESETN;
   wire [11:0]M_AXI_GP1_ARID;
   wire [3:0]M_AXI_GP1_ARLEN;
@@ -3016,7 +2879,7 @@ module design_1_processing_system7_0_0_processing_system7_v5_5_processing_system
   wire M_AXI_GP1_ARVALID;
   wire [31:0]M_AXI_GP1_AWADDR;
   wire [1:0]M_AXI_GP1_AWBURST;
-  wire [3:0]M_AXI_GP1_AWCACHE;
+  wire [3:0]\^M_AXI_GP1_AWCACHE ;
   wire [11:0]M_AXI_GP1_AWID;
   wire [3:0]M_AXI_GP1_AWLEN;
   wire [1:0]M_AXI_GP1_AWLOCK;
@@ -3505,6 +3368,10 @@ module design_1_processing_system7_0_0_processing_system7_v5_5_processing_system
   wire [7:0]NLW_PS7_i_EMIOENET0GMIITXD_UNCONNECTED;
   wire [7:0]NLW_PS7_i_EMIOENET1GMIITXD_UNCONNECTED;
   wire [31:0]NLW_PS7_i_EMIOTRACEDATA_UNCONNECTED;
+  wire [1:1]NLW_PS7_i_MAXIGP0ARCACHE_UNCONNECTED;
+  wire [1:1]NLW_PS7_i_MAXIGP0AWCACHE_UNCONNECTED;
+  wire [1:1]NLW_PS7_i_MAXIGP1ARCACHE_UNCONNECTED;
+  wire [1:1]NLW_PS7_i_MAXIGP1AWCACHE_UNCONNECTED;
 
   assign ENET0_GMII_TXD[7] = \<const0> ;
   assign ENET0_GMII_TXD[6] = \<const0> ;
@@ -3526,12 +3393,24 @@ module design_1_processing_system7_0_0_processing_system7_v5_5_processing_system
   assign ENET1_GMII_TXD[0] = \<const0> ;
   assign ENET1_GMII_TX_EN = \<const0> ;
   assign ENET1_GMII_TX_ER = \<const0> ;
+  assign M_AXI_GP0_ARCACHE[3:2] = \^M_AXI_GP0_ARCACHE [3:2];
+  assign M_AXI_GP0_ARCACHE[1] = \<const1> ;
+  assign M_AXI_GP0_ARCACHE[0] = \^M_AXI_GP0_ARCACHE [0];
   assign M_AXI_GP0_ARSIZE[2] = \<const0> ;
   assign M_AXI_GP0_ARSIZE[1:0] = \^M_AXI_GP0_ARSIZE [1:0];
+  assign M_AXI_GP0_AWCACHE[3:2] = \^M_AXI_GP0_AWCACHE [3:2];
+  assign M_AXI_GP0_AWCACHE[1] = \<const1> ;
+  assign M_AXI_GP0_AWCACHE[0] = \^M_AXI_GP0_AWCACHE [0];
   assign M_AXI_GP0_AWSIZE[2] = \<const0> ;
   assign M_AXI_GP0_AWSIZE[1:0] = \^M_AXI_GP0_AWSIZE [1:0];
+  assign M_AXI_GP1_ARCACHE[3:2] = \^M_AXI_GP1_ARCACHE [3:2];
+  assign M_AXI_GP1_ARCACHE[1] = \<const1> ;
+  assign M_AXI_GP1_ARCACHE[0] = \^M_AXI_GP1_ARCACHE [0];
   assign M_AXI_GP1_ARSIZE[2] = \<const0> ;
   assign M_AXI_GP1_ARSIZE[1:0] = \^M_AXI_GP1_ARSIZE [1:0];
+  assign M_AXI_GP1_AWCACHE[3:2] = \^M_AXI_GP1_AWCACHE [3:2];
+  assign M_AXI_GP1_AWCACHE[1] = \<const1> ;
+  assign M_AXI_GP1_AWCACHE[0] = \^M_AXI_GP1_AWCACHE [0];
   assign M_AXI_GP1_AWSIZE[2] = \<const0> ;
   assign M_AXI_GP1_AWSIZE[1:0] = \^M_AXI_GP1_AWSIZE [1:0];
   assign PJTAG_TDO = \<const0> ;
@@ -4169,7 +4048,7 @@ module design_1_processing_system7_0_0_processing_system7_v5_5_processing_system
         .MAXIGP0ACLK(M_AXI_GP0_ACLK),
         .MAXIGP0ARADDR(M_AXI_GP0_ARADDR),
         .MAXIGP0ARBURST(M_AXI_GP0_ARBURST),
-        .MAXIGP0ARCACHE(M_AXI_GP0_ARCACHE),
+        .MAXIGP0ARCACHE(\^M_AXI_GP0_ARCACHE ),
         .MAXIGP0ARESETN(M_AXI_GP0_ARESETN),
         .MAXIGP0ARID(M_AXI_GP0_ARID),
         .MAXIGP0ARLEN(M_AXI_GP0_ARLEN),
@@ -4181,7 +4060,7 @@ module design_1_processing_system7_0_0_processing_system7_v5_5_processing_system
         .MAXIGP0ARVALID(M_AXI_GP0_ARVALID),
         .MAXIGP0AWADDR(M_AXI_GP0_AWADDR),
         .MAXIGP0AWBURST(M_AXI_GP0_AWBURST),
-        .MAXIGP0AWCACHE(M_AXI_GP0_AWCACHE),
+        .MAXIGP0AWCACHE(\^M_AXI_GP0_AWCACHE ),
         .MAXIGP0AWID(M_AXI_GP0_AWID),
         .MAXIGP0AWLEN(M_AXI_GP0_AWLEN),
         .MAXIGP0AWLOCK(M_AXI_GP0_AWLOCK),
@@ -4209,7 +4088,7 @@ module design_1_processing_system7_0_0_processing_system7_v5_5_processing_system
         .MAXIGP1ACLK(M_AXI_GP1_ACLK),
         .MAXIGP1ARADDR(M_AXI_GP1_ARADDR),
         .MAXIGP1ARBURST(M_AXI_GP1_ARBURST),
-        .MAXIGP1ARCACHE(M_AXI_GP1_ARCACHE),
+        .MAXIGP1ARCACHE(\^M_AXI_GP1_ARCACHE ),
         .MAXIGP1ARESETN(M_AXI_GP1_ARESETN),
         .MAXIGP1ARID(M_AXI_GP1_ARID),
         .MAXIGP1ARLEN(M_AXI_GP1_ARLEN),
@@ -4221,7 +4100,7 @@ module design_1_processing_system7_0_0_processing_system7_v5_5_processing_system
         .MAXIGP1ARVALID(M_AXI_GP1_ARVALID),
         .MAXIGP1AWADDR(M_AXI_GP1_AWADDR),
         .MAXIGP1AWBURST(M_AXI_GP1_AWBURST),
-        .MAXIGP1AWCACHE(M_AXI_GP1_AWCACHE),
+        .MAXIGP1AWCACHE(\^M_AXI_GP1_AWCACHE ),
         .MAXIGP1AWID(M_AXI_GP1_AWID),
         .MAXIGP1AWLEN(M_AXI_GP1_AWLEN),
         .MAXIGP1AWLOCK(M_AXI_GP1_AWLOCK),
@@ -4658,6 +4537,8 @@ module design_1_processing_system7_0_0_processing_system7_v5_5_processing_system
     SPI1_SS_T_INST_0
        (.I0(SPI1_SS_T_n),
         .O(SPI1_SS_T));
+  VCC VCC
+       (.P(\<const1> ));
   (* BOX_TYPE = "PRIMITIVE" *) 
   BUFG \buffer_fclk_clk_0.FCLK_CLK_0_BUFG 
        (.I(FCLK_CLK_unbuffered),
@@ -5297,8 +5178,8 @@ module glbl ();
     reg JTAG_USER_TDO3_GLBL = 1'bz;
     reg JTAG_USER_TDO4_GLBL = 1'bz;
 
-    assign (weak1, weak0) GSR = GSR_int;
-    assign (weak1, weak0) GTS = GTS_int;
+    assign (strong1, weak0) GSR = GSR_int;
+    assign (strong1, weak0) GTS = GTS_int;
     assign (weak1, weak0) PRLD = PRLD_int;
 
     initial begin

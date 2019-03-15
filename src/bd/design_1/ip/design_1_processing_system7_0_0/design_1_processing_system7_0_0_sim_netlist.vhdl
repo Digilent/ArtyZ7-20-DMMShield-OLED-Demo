@@ -1,7 +1,7 @@
--- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
+-- Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
--- Tool Version: Vivado v.2016.4 (win64) Build 1756540 Mon Jan 23 19:11:23 MST 2017
--- Date        : Fri Nov 24 13:18:47 2017
+-- Tool Version: Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
+-- Date        : Wed Aug 29 11:58:38 2018
 -- Host        : cristianf-ro running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim -rename_top design_1_processing_system7_0_0 -prefix
 --               design_1_processing_system7_0_0_ design_1_processing_system7_0_0_sim_netlist.vhdl
@@ -727,9 +727,9 @@ entity design_1_processing_system7_0_0_processing_system7_v5_5_processing_system
   attribute C_FCLK_CLK3_BUF : string;
   attribute C_FCLK_CLK3_BUF of design_1_processing_system7_0_0_processing_system7_v5_5_processing_system7 : entity is "FALSE";
   attribute C_GP0_EN_MODIFIABLE_TXN : integer;
-  attribute C_GP0_EN_MODIFIABLE_TXN of design_1_processing_system7_0_0_processing_system7_v5_5_processing_system7 : entity is 0;
+  attribute C_GP0_EN_MODIFIABLE_TXN of design_1_processing_system7_0_0_processing_system7_v5_5_processing_system7 : entity is 1;
   attribute C_GP1_EN_MODIFIABLE_TXN : integer;
-  attribute C_GP1_EN_MODIFIABLE_TXN of design_1_processing_system7_0_0_processing_system7_v5_5_processing_system7 : entity is 0;
+  attribute C_GP1_EN_MODIFIABLE_TXN of design_1_processing_system7_0_0_processing_system7_v5_5_processing_system7 : entity is 1;
   attribute C_INCLUDE_ACP_TRANS_CHECK : integer;
   attribute C_INCLUDE_ACP_TRANS_CHECK of design_1_processing_system7_0_0_processing_system7_v5_5_processing_system7 : entity is 0;
   attribute C_INCLUDE_TRACE_BUFFER : integer;
@@ -822,6 +822,7 @@ end design_1_processing_system7_0_0_processing_system7_v5_5_processing_system7;
 
 architecture STRUCTURE of design_1_processing_system7_0_0_processing_system7_v5_5_processing_system7 is
   signal \<const0>\ : STD_LOGIC;
+  signal \<const1>\ : STD_LOGIC;
   signal ENET0_MDIO_T_n : STD_LOGIC;
   signal ENET1_MDIO_T_n : STD_LOGIC;
   signal FCLK_CLK_unbuffered : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -829,9 +830,13 @@ architecture STRUCTURE of design_1_processing_system7_0_0_processing_system7_v5_
   signal I2C0_SDA_T_n : STD_LOGIC;
   signal I2C1_SCL_T_n : STD_LOGIC;
   signal I2C1_SDA_T_n : STD_LOGIC;
+  signal \^m_axi_gp0_arcache\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \^m_axi_gp0_arsize\ : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal \^m_axi_gp0_awcache\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \^m_axi_gp0_awsize\ : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal \^m_axi_gp1_arcache\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \^m_axi_gp1_arsize\ : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal \^m_axi_gp1_awcache\ : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal \^m_axi_gp1_awsize\ : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal SDIO0_CMD_T_n : STD_LOGIC;
   signal SDIO0_DATA_T_n : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -910,6 +915,10 @@ architecture STRUCTURE of design_1_processing_system7_0_0_processing_system7_v5_
   signal NLW_PS7_i_EMIOENET0GMIITXD_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_PS7_i_EMIOENET1GMIITXD_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_PS7_i_EMIOTRACEDATA_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_PS7_i_MAXIGP0ARCACHE_UNCONNECTED : STD_LOGIC_VECTOR ( 1 to 1 );
+  signal NLW_PS7_i_MAXIGP0AWCACHE_UNCONNECTED : STD_LOGIC_VECTOR ( 1 to 1 );
+  signal NLW_PS7_i_MAXIGP1ARCACHE_UNCONNECTED : STD_LOGIC_VECTOR ( 1 to 1 );
+  signal NLW_PS7_i_MAXIGP1AWCACHE_UNCONNECTED : STD_LOGIC_VECTOR ( 1 to 1 );
   attribute BOX_TYPE : string;
   attribute BOX_TYPE of DDR_CAS_n_BIBUF : label is "PRIMITIVE";
   attribute BOX_TYPE of DDR_CKE_BIBUF : label is "PRIMITIVE";
@@ -1064,12 +1073,24 @@ begin
   ENET1_GMII_TXD(0) <= \<const0>\;
   ENET1_GMII_TX_EN <= \<const0>\;
   ENET1_GMII_TX_ER <= \<const0>\;
+  M_AXI_GP0_ARCACHE(3 downto 2) <= \^m_axi_gp0_arcache\(3 downto 2);
+  M_AXI_GP0_ARCACHE(1) <= \<const1>\;
+  M_AXI_GP0_ARCACHE(0) <= \^m_axi_gp0_arcache\(0);
   M_AXI_GP0_ARSIZE(2) <= \<const0>\;
   M_AXI_GP0_ARSIZE(1 downto 0) <= \^m_axi_gp0_arsize\(1 downto 0);
+  M_AXI_GP0_AWCACHE(3 downto 2) <= \^m_axi_gp0_awcache\(3 downto 2);
+  M_AXI_GP0_AWCACHE(1) <= \<const1>\;
+  M_AXI_GP0_AWCACHE(0) <= \^m_axi_gp0_awcache\(0);
   M_AXI_GP0_AWSIZE(2) <= \<const0>\;
   M_AXI_GP0_AWSIZE(1 downto 0) <= \^m_axi_gp0_awsize\(1 downto 0);
+  M_AXI_GP1_ARCACHE(3 downto 2) <= \^m_axi_gp1_arcache\(3 downto 2);
+  M_AXI_GP1_ARCACHE(1) <= \<const1>\;
+  M_AXI_GP1_ARCACHE(0) <= \^m_axi_gp1_arcache\(0);
   M_AXI_GP1_ARSIZE(2) <= \<const0>\;
   M_AXI_GP1_ARSIZE(1 downto 0) <= \^m_axi_gp1_arsize\(1 downto 0);
+  M_AXI_GP1_AWCACHE(3 downto 2) <= \^m_axi_gp1_awcache\(3 downto 2);
+  M_AXI_GP1_AWCACHE(1) <= \<const1>\;
+  M_AXI_GP1_AWCACHE(0) <= \^m_axi_gp1_awcache\(0);
   M_AXI_GP1_AWSIZE(2) <= \<const0>\;
   M_AXI_GP1_AWSIZE(1 downto 0) <= \^m_axi_gp1_awsize\(1 downto 0);
   PJTAG_TDO <= \<const0>\;
@@ -1993,7 +2014,9 @@ PS7_i: unisim.vcomponents.PS7
       MAXIGP0ACLK => M_AXI_GP0_ACLK,
       MAXIGP0ARADDR(31 downto 0) => M_AXI_GP0_ARADDR(31 downto 0),
       MAXIGP0ARBURST(1 downto 0) => M_AXI_GP0_ARBURST(1 downto 0),
-      MAXIGP0ARCACHE(3 downto 0) => M_AXI_GP0_ARCACHE(3 downto 0),
+      MAXIGP0ARCACHE(3 downto 2) => \^m_axi_gp0_arcache\(3 downto 2),
+      MAXIGP0ARCACHE(1) => NLW_PS7_i_MAXIGP0ARCACHE_UNCONNECTED(1),
+      MAXIGP0ARCACHE(0) => \^m_axi_gp0_arcache\(0),
       MAXIGP0ARESETN => M_AXI_GP0_ARESETN,
       MAXIGP0ARID(11 downto 0) => M_AXI_GP0_ARID(11 downto 0),
       MAXIGP0ARLEN(3 downto 0) => M_AXI_GP0_ARLEN(3 downto 0),
@@ -2005,7 +2028,9 @@ PS7_i: unisim.vcomponents.PS7
       MAXIGP0ARVALID => M_AXI_GP0_ARVALID,
       MAXIGP0AWADDR(31 downto 0) => M_AXI_GP0_AWADDR(31 downto 0),
       MAXIGP0AWBURST(1 downto 0) => M_AXI_GP0_AWBURST(1 downto 0),
-      MAXIGP0AWCACHE(3 downto 0) => M_AXI_GP0_AWCACHE(3 downto 0),
+      MAXIGP0AWCACHE(3 downto 2) => \^m_axi_gp0_awcache\(3 downto 2),
+      MAXIGP0AWCACHE(1) => NLW_PS7_i_MAXIGP0AWCACHE_UNCONNECTED(1),
+      MAXIGP0AWCACHE(0) => \^m_axi_gp0_awcache\(0),
       MAXIGP0AWID(11 downto 0) => M_AXI_GP0_AWID(11 downto 0),
       MAXIGP0AWLEN(3 downto 0) => M_AXI_GP0_AWLEN(3 downto 0),
       MAXIGP0AWLOCK(1 downto 0) => M_AXI_GP0_AWLOCK(1 downto 0),
@@ -2033,7 +2058,9 @@ PS7_i: unisim.vcomponents.PS7
       MAXIGP1ACLK => M_AXI_GP1_ACLK,
       MAXIGP1ARADDR(31 downto 0) => M_AXI_GP1_ARADDR(31 downto 0),
       MAXIGP1ARBURST(1 downto 0) => M_AXI_GP1_ARBURST(1 downto 0),
-      MAXIGP1ARCACHE(3 downto 0) => M_AXI_GP1_ARCACHE(3 downto 0),
+      MAXIGP1ARCACHE(3 downto 2) => \^m_axi_gp1_arcache\(3 downto 2),
+      MAXIGP1ARCACHE(1) => NLW_PS7_i_MAXIGP1ARCACHE_UNCONNECTED(1),
+      MAXIGP1ARCACHE(0) => \^m_axi_gp1_arcache\(0),
       MAXIGP1ARESETN => M_AXI_GP1_ARESETN,
       MAXIGP1ARID(11 downto 0) => M_AXI_GP1_ARID(11 downto 0),
       MAXIGP1ARLEN(3 downto 0) => M_AXI_GP1_ARLEN(3 downto 0),
@@ -2045,7 +2072,9 @@ PS7_i: unisim.vcomponents.PS7
       MAXIGP1ARVALID => M_AXI_GP1_ARVALID,
       MAXIGP1AWADDR(31 downto 0) => M_AXI_GP1_AWADDR(31 downto 0),
       MAXIGP1AWBURST(1 downto 0) => M_AXI_GP1_AWBURST(1 downto 0),
-      MAXIGP1AWCACHE(3 downto 0) => M_AXI_GP1_AWCACHE(3 downto 0),
+      MAXIGP1AWCACHE(3 downto 2) => \^m_axi_gp1_awcache\(3 downto 2),
+      MAXIGP1AWCACHE(1) => NLW_PS7_i_MAXIGP1AWCACHE_UNCONNECTED(1),
+      MAXIGP1AWCACHE(0) => \^m_axi_gp1_awcache\(0),
       MAXIGP1AWID(11 downto 0) => M_AXI_GP1_AWID(11 downto 0),
       MAXIGP1AWLEN(3 downto 0) => M_AXI_GP1_AWLEN(3 downto 0),
       MAXIGP1AWLOCK(1 downto 0) => M_AXI_GP1_AWLOCK(1 downto 0),
@@ -2539,6 +2568,10 @@ SPI1_SS_T_INST_0: unisim.vcomponents.LUT1
         port map (
       I0 => SPI1_SS_T_n,
       O => SPI1_SS_T
+    );
+VCC: unisim.vcomponents.VCC
+     port map (
+      P => \<const1>\
     );
 \buffer_fclk_clk_0.FCLK_CLK_0_BUFG\: unisim.vcomponents.BUFG
      port map (
@@ -3397,7 +3430,7 @@ entity design_1_processing_system7_0_0 is
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of design_1_processing_system7_0_0 : entity is "yes";
   attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of design_1_processing_system7_0_0 : entity is "processing_system7_v5_5_processing_system7,Vivado 2016.4";
+  attribute X_CORE_INFO of design_1_processing_system7_0_0 : entity is "processing_system7_v5_5_processing_system7,Vivado 2018.2";
 end design_1_processing_system7_0_0;
 
 architecture STRUCTURE of design_1_processing_system7_0_0 is
@@ -3717,9 +3750,9 @@ architecture STRUCTURE of design_1_processing_system7_0_0 is
   attribute C_FCLK_CLK3_BUF : string;
   attribute C_FCLK_CLK3_BUF of inst : label is "FALSE";
   attribute C_GP0_EN_MODIFIABLE_TXN : integer;
-  attribute C_GP0_EN_MODIFIABLE_TXN of inst : label is 0;
+  attribute C_GP0_EN_MODIFIABLE_TXN of inst : label is 1;
   attribute C_GP1_EN_MODIFIABLE_TXN : integer;
-  attribute C_GP1_EN_MODIFIABLE_TXN of inst : label is 0;
+  attribute C_GP1_EN_MODIFIABLE_TXN of inst : label is 1;
   attribute C_INCLUDE_ACP_TRANS_CHECK : integer;
   attribute C_INCLUDE_ACP_TRANS_CHECK of inst : label is 0;
   attribute C_INCLUDE_TRACE_BUFFER : integer;
@@ -3808,283 +3841,80 @@ architecture STRUCTURE of design_1_processing_system7_0_0 is
   attribute POWER of inst : label is "<PROCESSOR name={system} numA9Cores={2} clockFreq={650} load={0.5} /><MEMORY name={code} memType={DDR3} dataWidth={16} clockFreq={525} readRate={0.5} writeRate={0.5} /><IO interface={GPIO_Bank_1} ioStandard={LVCMOS18} bidis={4} ioBank={Vcco_p1} clockFreq={1} usageRate={0.5} /><IO interface={GPIO_Bank_0} ioStandard={LVCMOS33} bidis={6} ioBank={Vcco_p0} clockFreq={1} usageRate={0.5} /><IO interface={UART} ioStandard={LVCMOS33} bidis={2} ioBank={Vcco_p0} clockFreq={100.000000} usageRate={0.5} /><IO interface={SD} ioStandard={LVCMOS18} bidis={7} ioBank={Vcco_p1} clockFreq={50.000000} usageRate={0.5} /><IO interface={USB} ioStandard={LVCMOS18} bidis={12} ioBank={Vcco_p1} clockFreq={60} usageRate={0.5} /><IO interface={GigE} ioStandard={LVCMOS18} bidis={14} ioBank={Vcco_p1} clockFreq={125.000000} usageRate={0.5} /><IO interface={QSPI} ioStandard={LVCMOS33} bidis={7} ioBank={Vcco_p0} clockFreq={200} usageRate={0.5} /><PLL domain={Processor} vco={1300.000} /><PLL domain={Memory} vco={1050.000} /><PLL domain={IO} vco={1000.000} /><AXI interface={M_AXI_GP0} dataWidth={32} clockFreq={10} usageRate={0.5} />/>";
   attribute USE_TRACE_DATA_EDGE_DETECTOR : integer;
   attribute USE_TRACE_DATA_EDGE_DETECTOR of inst : label is 0;
+  attribute X_INTERFACE_INFO : string;
+  attribute X_INTERFACE_INFO of DDR_CAS_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CAS_N";
+  attribute X_INTERFACE_INFO of DDR_CKE : signal is "xilinx.com:interface:ddrx:1.0 DDR CKE";
+  attribute X_INTERFACE_INFO of DDR_CS_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CS_N";
+  attribute X_INTERFACE_INFO of DDR_Clk : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_P";
+  attribute X_INTERFACE_INFO of DDR_Clk_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_N";
+  attribute X_INTERFACE_INFO of DDR_DRSTB : signal is "xilinx.com:interface:ddrx:1.0 DDR RESET_N";
+  attribute X_INTERFACE_INFO of DDR_ODT : signal is "xilinx.com:interface:ddrx:1.0 DDR ODT";
+  attribute X_INTERFACE_INFO of DDR_RAS_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RAS_N";
+  attribute X_INTERFACE_INFO of DDR_VRN : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRN";
+  attribute X_INTERFACE_INFO of DDR_VRP : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRP";
+  attribute X_INTERFACE_INFO of DDR_WEB : signal is "xilinx.com:interface:ddrx:1.0 DDR WE_N";
+  attribute X_INTERFACE_INFO of FCLK_CLK0 : signal is "xilinx.com:signal:clock:1.0 FCLK_CLK0 CLK";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of FCLK_CLK0 : signal is "XIL_INTERFACENAME FCLK_CLK0, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0";
+  attribute X_INTERFACE_INFO of FCLK_RESET0_N : signal is "xilinx.com:signal:reset:1.0 FCLK_RESET0_N RST";
+  attribute X_INTERFACE_PARAMETER of FCLK_RESET0_N : signal is "XIL_INTERFACENAME FCLK_RESET0_N, POLARITY ACTIVE_LOW";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_ACLK : signal is "xilinx.com:signal:clock:1.0 M_AXI_GP0_ACLK CLK";
+  attribute X_INTERFACE_PARAMETER of M_AXI_GP0_ACLK : signal is "XIL_INTERFACENAME M_AXI_GP0_ACLK, ASSOCIATED_BUSIF M_AXI_GP0, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_ARREADY : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARREADY";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_ARVALID : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARVALID";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_AWREADY : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWREADY";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_AWVALID : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWVALID";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_BREADY : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 BREADY";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_BVALID : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 BVALID";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_RLAST : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 RLAST";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_RREADY : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 RREADY";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_RVALID : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 RVALID";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_WLAST : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 WLAST";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_WREADY : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 WREADY";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_WVALID : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 WVALID";
+  attribute X_INTERFACE_INFO of PS_CLK : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK";
+  attribute X_INTERFACE_INFO of PS_PORB : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB";
+  attribute X_INTERFACE_PARAMETER of PS_PORB : signal is "XIL_INTERFACENAME FIXED_IO, CAN_DEBUG false";
+  attribute X_INTERFACE_INFO of PS_SRSTB : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB";
+  attribute X_INTERFACE_INFO of USB0_VBUS_PWRFAULT : signal is "xilinx.com:display_processing_system7:usbctrl:1.0 USBIND_0 VBUS_PWRFAULT";
+  attribute X_INTERFACE_INFO of USB0_VBUS_PWRSELECT : signal is "xilinx.com:display_processing_system7:usbctrl:1.0 USBIND_0 VBUS_PWRSELECT";
+  attribute X_INTERFACE_INFO of DDR_Addr : signal is "xilinx.com:interface:ddrx:1.0 DDR ADDR";
+  attribute X_INTERFACE_INFO of DDR_BankAddr : signal is "xilinx.com:interface:ddrx:1.0 DDR BA";
+  attribute X_INTERFACE_INFO of DDR_DM : signal is "xilinx.com:interface:ddrx:1.0 DDR DM";
+  attribute X_INTERFACE_INFO of DDR_DQ : signal is "xilinx.com:interface:ddrx:1.0 DDR DQ";
+  attribute X_INTERFACE_INFO of DDR_DQS : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
+  attribute X_INTERFACE_PARAMETER of DDR_DQS : signal is "XIL_INTERFACENAME DDR, CAN_DEBUG false, TIMEPERIOD_PS 1250, MEMORY_TYPE COMPONENTS, DATA_WIDTH 8, CS_ENABLED true, DATA_MASK_ENABLED true, SLOT Single, MEM_ADDR_MAP ROW_COLUMN_BANK, BURST_LENGTH 8, AXI_ARBITRATION_SCHEME TDM, CAS_LATENCY 11, CAS_WRITE_LATENCY 11";
+  attribute X_INTERFACE_INFO of DDR_DQS_n : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_N";
+  attribute X_INTERFACE_INFO of MIO : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_ARADDR : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARADDR";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_ARBURST : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARBURST";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_ARCACHE : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARCACHE";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_ARID : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARID";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_ARLEN : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARLEN";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_ARLOCK : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARLOCK";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_ARPROT : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARPROT";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_ARQOS : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARQOS";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_ARSIZE : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 ARSIZE";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_AWADDR : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWADDR";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_AWBURST : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWBURST";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_AWCACHE : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWCACHE";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_AWID : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWID";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_AWLEN : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWLEN";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_AWLOCK : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWLOCK";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_AWPROT : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWPROT";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_AWQOS : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWQOS";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_AWSIZE : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 AWSIZE";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_BID : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 BID";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_BRESP : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 BRESP";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_RDATA : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 RDATA";
+  attribute X_INTERFACE_PARAMETER of M_AXI_GP0_RDATA : signal is "XIL_INTERFACENAME M_AXI_GP0, SUPPORTS_NARROW_BURST 0, NUM_WRITE_OUTSTANDING 8, NUM_READ_OUTSTANDING 8, DATA_WIDTH 32, PROTOCOL AXI3, FREQ_HZ 100000000, ID_WIDTH 12, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 1, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 1, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, MAX_BURST_LENGTH 16, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, NUM_READ_THREADS 4, NUM_WRITE_THREADS 4, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_RID : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 RID";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_RRESP : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 RRESP";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_WDATA : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 WDATA";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_WID : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 WID";
+  attribute X_INTERFACE_INFO of M_AXI_GP0_WSTRB : signal is "xilinx.com:interface:aximm:1.0 M_AXI_GP0 WSTRB";
+  attribute X_INTERFACE_INFO of USB0_PORT_INDCTL : signal is "xilinx.com:display_processing_system7:usbctrl:1.0 USBIND_0 PORT_INDCTL";
 begin
-pullup_DDR_DM_2inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DM(2)
-    );
-pullup_DDR_DM_3inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DM(3)
-    );
-pullup_DDR_DQ_16inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(16)
-    );
-pullup_DDR_DQ_17inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(17)
-    );
-pullup_DDR_DQ_18inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(18)
-    );
-pullup_DDR_DQ_19inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(19)
-    );
-pullup_DDR_DQ_20inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(20)
-    );
-pullup_DDR_DQ_21inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(21)
-    );
-pullup_DDR_DQ_22inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(22)
-    );
-pullup_DDR_DQ_23inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(23)
-    );
-pullup_DDR_DQ_24inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(24)
-    );
-pullup_DDR_DQ_25inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(25)
-    );
-pullup_DDR_DQ_26inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(26)
-    );
-pullup_DDR_DQ_27inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(27)
-    );
-pullup_DDR_DQ_28inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(28)
-    );
-pullup_DDR_DQ_29inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(29)
-    );
-pullup_DDR_DQ_30inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(30)
-    );
-pullup_DDR_DQ_31inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQ(31)
-    );
-pullup_DDR_DQS_2inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQS(2)
-    );
-pullup_DDR_DQS_3inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQS(3)
-    );
-pullup_DDR_DQS_n_2inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQS_n(2)
-    );
-pullup_DDR_DQS_n_3inst: unisim.vcomponents.PULLUP
-    port map (
-      O => DDR_DQS_n(3)
-    );
-pullup_MIO_0inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(0)
-    );
-pullup_MIO_1inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(1)
-    );
-pullup_MIO_9inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(9)
-    );
-pullup_MIO_10inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(10)
-    );
-pullup_MIO_11inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(11)
-    );
-pullup_MIO_12inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(12)
-    );
-pullup_MIO_13inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(13)
-    );
-pullup_MIO_14inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(14)
-    );
-pullup_MIO_15inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(15)
-    );
-pullup_MIO_16inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(16)
-    );
-pullup_MIO_17inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(17)
-    );
-pullup_MIO_18inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(18)
-    );
-pullup_MIO_19inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(19)
-    );
-pullup_MIO_20inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(20)
-    );
-pullup_MIO_21inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(21)
-    );
-pullup_MIO_22inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(22)
-    );
-pullup_MIO_23inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(23)
-    );
-pullup_MIO_24inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(24)
-    );
-pullup_MIO_25inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(25)
-    );
-pullup_MIO_26inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(26)
-    );
-pullup_MIO_27inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(27)
-    );
-pullup_MIO_28inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(28)
-    );
-pullup_MIO_29inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(29)
-    );
-pullup_MIO_30inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(30)
-    );
-pullup_MIO_31inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(31)
-    );
-pullup_MIO_32inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(32)
-    );
-pullup_MIO_33inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(33)
-    );
-pullup_MIO_34inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(34)
-    );
-pullup_MIO_35inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(35)
-    );
-pullup_MIO_36inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(36)
-    );
-pullup_MIO_37inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(37)
-    );
-pullup_MIO_38inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(38)
-    );
-pullup_MIO_39inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(39)
-    );
-pullup_MIO_40inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(40)
-    );
-pullup_MIO_41inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(41)
-    );
-pullup_MIO_42inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(42)
-    );
-pullup_MIO_43inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(43)
-    );
-pullup_MIO_44inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(44)
-    );
-pullup_MIO_45inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(45)
-    );
-pullup_MIO_46inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(46)
-    );
-pullup_MIO_47inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(47)
-    );
-pullup_MIO_48inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(48)
-    );
-pullup_MIO_49inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(49)
-    );
-pullup_MIO_50inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(50)
-    );
-pullup_MIO_51inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(51)
-    );
-pullup_MIO_52inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(52)
-    );
-pullup_MIO_53inst: unisim.vcomponents.PULLUP
-    port map (
-      O => MIO(53)
-    );
 inst: entity work.design_1_processing_system7_0_0_processing_system7_v5_5_processing_system7
      port map (
       CAN0_PHY_RX => '0',

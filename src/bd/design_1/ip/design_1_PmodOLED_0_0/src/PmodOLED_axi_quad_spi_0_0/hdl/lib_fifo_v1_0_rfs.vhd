@@ -173,7 +173,7 @@
 --     - Added sleep, wr_rst_busy, and rd_rst_busy signals
 --     - Changed FULL_FLAGS_RST_VAL to '1'
 -- ^^^^^^
---     - Update to use fifo_generator_v13_0_5 (New parameter C_EN_SAFETY_CKT  is added with default value as 0 or disabled)
+--     - Update to use fifo_generator_v13_0_6 (New parameter C_EN_SAFETY_CKT  is added with default value as 0 or disabled)
 --
 -------------------------------------------------------------------------------
 library IEEE;
@@ -184,18 +184,19 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 USE IEEE.std_logic_arith.ALL;
 
 
-library fifo_generator_v13_1_3;
-use fifo_generator_v13_1_3.all;
---library lib_fifo_v1_0_7;
---use lib_fifo_v1_0_7.lib_fifo_pkg.all;
---use lib_fifo_v1_0_7.family_support.all;
+library fifo_generator_v13_2_2;
+use fifo_generator_v13_2_2.all;
+--library lib_fifo_v1_0_11;
+--use lib_fifo_v1_0_11.lib_fifo_pkg.all;
+--use lib_fifo_v1_0_11.family_support.all;
 
 
 -- synopsys translate_off
 --library XilinxCoreLib;
 --use XilinxCoreLib.all;
 -- synopsys translate_on
-
+Library xpm;
+use xpm.vcomponents.all;
 
 -------------------------------------------------------------------------------
 
@@ -225,7 +226,8 @@ entity async_fifo_fg is
         C_WR_ACK_LOW       : integer := 0 ;
         C_WR_COUNT_WIDTH   : integer := 3 ;
         C_WR_ERR_LOW       : integer := 0 ;
-        C_SYNCHRONIZER_STAGE : integer := 2    -- valid values are 0 to 8  
+        C_SYNCHRONIZER_STAGE : integer := 2;    -- valid values are 0 to 8  
+        C_XPM_FIFO         : integer := 0
     );
   port (
         Din            : in std_logic_vector(C_DATA_WIDTH-1 downto 0) := (others => '0');
@@ -336,7 +338,60 @@ end function log2;
     
   
   
-  
+
+function XPM_FIFO_GetMemType (inputmemtype : integer) return string is
+    
+      Variable memtype1 : string(1 to 4)  := "auto";
+      Variable memtype2 : string(1 to 5)  := "block";
+      Variable memtype3 : string(1 to 11) := "distributed";
+      
+    begin
+   ----- "auto", "block", "distributed", or "ultra"
+       If (inputmemtype = 0) Then -- distributed Memory 
+ 	      return(memtype1);
+       elsif (inputmemtype = 1) then
+       	     return(memtype2);
+       elsif (inputmemtype = 2)  then
+             return(memtype3);
+       else 
+             return(memtype1);
+       End if;
+         
+    end function XPM_FIFO_GetMemType;
+-------------------------------------------------------------------------
+function Get_READ_MODE (PRELOAD_REGS: integer; PRELOAD_LATENCY: integer) return string is
+    
+      Variable READ_MODE_type1 : string(1 to 3) := "std";
+      Variable READ_MODE_type2 : string(1 to 4) := "fwft";
+
+     begin
+
+          if (PRELOAD_REGS = 0) and (PRELOAD_LATENCY = 1) then
+             return(READ_MODE_type1);
+          elsif (PRELOAD_REGS = 1) and (PRELOAD_LATENCY = 0) then
+             return(READ_MODE_type2);
+          else
+             return(READ_MODE_type1);
+          end if;
+
+      
+          
+   end function Get_READ_MODE;
+
+ function Getlatency (PRELOAD_REGS: integer; PRELOAD_LATENCY: integer) return integer is
+
+      variable latency : integer := 1;
+
+     begin
+
+          if (PRELOAD_REGS = 0) and (PRELOAD_LATENCY = 1) then
+             latency := 1;
+          elsif (PRELOAD_REGS = 1) and (PRELOAD_LATENCY = 0) then
+             latency := 0;
+          end if;
+       return latency;
+   end function Getlatency;
+ 
   
   
   -- Constant Declarations  ----------------------------------------------
@@ -532,8 +587,20 @@ end function log2;
    signal Full_int             : std_logic;
    signal Almost_full_int      : std_logic;
 
+---------------------------------------------------
+-----XPM FIFO  FUNCTIONS &  SIGNALS
+    signal Empty_i : std_logic;
+    signal Wr_err_i :std_logic;
+    signal Rd_err_i :std_logic;
+    constant READ_MODE :string := Get_READ_MODE(C_PRELOAD_REGS, C_PRELOAD_LATENCY);
+    constant FIFO_MEMORY_TYPE :string := XPM_FIFO_GetMemType(C_USE_BLOCKMEM);
+    constant RD_LATENCY : integer := Getlatency(C_PRELOAD_REGS, C_PRELOAD_LATENCY);
+
 begin --(architecture implementation)
 
+
+lib_fifo_instance : if C_XPM_FIFO = 0 generate
+begin
  
 full_gen: if (C_EN_SAFETY_CKT_1 = 1)  generate
 begin
@@ -734,7 +801,7 @@ end generate full_gen1;
          -- legacy BRAM implementations of an Async FIFo.
          --
          -------------------------------------------------------------------------------
-         I_ASYNC_FIFO_BRAM : entity fifo_generator_v13_1_3.fifo_generator_v13_1_3
+         I_ASYNC_FIFO_BRAM : entity fifo_generator_v13_2_2.fifo_generator_v13_2_2
             generic map(
               C_COMMON_CLOCK                 =>  0,   
               C_COUNT_TYPE                   =>  0,   
@@ -1341,7 +1408,7 @@ end generate full_gen1;
          -- legacy BRAM implementations of an Async FIFo.
          --
          -------------------------------------------------------------------------------
-         I_ASYNC_FIFO_BRAM : entity fifo_generator_v13_1_3.fifo_generator_v13_1_3
+         I_ASYNC_FIFO_BRAM : entity fifo_generator_v13_2_2.fifo_generator_v13_2_2
             generic map(
               C_COMMON_CLOCK                 =>  0,                                              
               C_COUNT_TYPE                   =>  0,                                              
@@ -1852,12 +1919,96 @@ end generate full_gen1;
  
  
     end generate USE_2N_DEPTH;
+
+end generate lib_fifo_instance;
+
+
     -----------------------------------------------------------------------
+-----XPM ASYNC FIFO INSTANCE
+
+   xpm_fifo_instance : if C_XPM_FIFO = 1 generate
+   begin
  
- 
+   xpm_fifo_async_inst : xpm_fifo_async
+    generic map (
+
+    FIFO_MEMORY_TYPE        => FIFO_MEMORY_TYPE,      ---"auto",           --string; "auto", "block", or "distributed";
+    ECC_MODE                => "no_ecc",              --string; "no_ecc" or "en_ecc";
+    RELATED_CLOCKS          => 0,                     --positive integer; 0 or 1
+    FIFO_WRITE_DEPTH        => C_FIFO_DEPTH,          ----2048,             --positive integer
+    WRITE_DATA_WIDTH        => C_DATA_WIDTH,          ----32,               --positive integer
+    WR_DATA_COUNT_WIDTH     => C_WR_COUNT_WIDTH,      ---12,               --positive integer
+    PROG_FULL_THRESH        => 10,                    --positive integer
+    FULL_RESET_VALUE        => 1,                     --positive integer; 0 or 1;
+    READ_MODE               => READ_MODE,             ----"std",            --string; "std" or "fwft";
+    FIFO_READ_LATENCY       => RD_LATENCY,                     --positive integer;
+    READ_DATA_WIDTH         => C_DATA_WIDTH,          -----32,               --positive integer
+    RD_DATA_COUNT_WIDTH     => C_RD_COUNT_WIDTH,      ---12,               --positive integer
+    PROG_EMPTY_THRESH       => 10,                    --positive integer
+    USE_ADV_FEATURES        => "1F1F",
+    DOUT_RESET_VALUE        => "0",                   --string
+    CDC_SYNC_STAGES         => C_SYNCHRONIZER_STAGE,  --2,                --positive integer
+    WAKEUP_TIME             => 0                      --positive integer; 0 or 2;
+  )
+  port map (
+
+    sleep            => '0',
+    rst              => Ainit,
+    wr_clk           => Wr_clk,
+    wr_ack           => Wr_ack,
+    wr_en            => Wr_en,
+    din              => Din,
+    full             => Full_int,
+    almost_full      => Almost_full,
+    overflow         => Wr_err_i,
+    wr_rst_busy      => wr_rst_busy,
+    rd_clk           => Rd_clk,
+    rd_en            => Rd_en,
+    dout             => Dout,
+    empty            => Empty_i,
+    almost_empty     => Almost_empty,
+    underflow        => Rd_err_i,
+    data_valid       => Rd_ack,
+    rd_rst_busy      => open,     ------rd_rst_busy,
+    prog_full        => open,     ------prog_full,
+    wr_data_count    => Wr_count,
+    prog_empty       => open,     ------prog_empty,
+    rd_data_count    => Rd_count,
+    injectsbiterr    => '0',
+    injectdbiterr    => '0',
+    sbiterr          => open,
+    dbiterr          => open
+  );
+
+  Empty <= Empty_i;
+  Full <= Full_int or wr_rst_busy;
+  Wr_err        <= Wr_err_i when (C_HAS_WR_ERR = 1) else '0';
+  Rd_err        <= Rd_err_i when (C_HAS_RD_ERR = 1) else '0';
+
+STD_MODE : if READ_MODE = "std" generate
+begin
+--process (rd_Clk)
+--begin
+--if (rd_Clk'event and rd_Clk = '1') then
+--   Rd_ack <= Rd_en;
+--end if;
+--end process;
+
+end generate STD_MODE;
+
+FWFT_MODE : if READ_MODE = "fwft" generate
+begin
+
+--Rd_ack <= not Empty_i;
+end generate FWFT_MODE;
+
+
+ end generate xpm_fifo_instance;
+
 
 end implementation;
-
+                     
+                
 
 
 -- sync_fifo_fg.vhd
@@ -2035,17 +2186,18 @@ end implementation;
 --     - Changed FULL_FLAGS_RST_VAL to '1'
 -- ^^^^^^
 --   KARTHEEK 03/02/2016
---     - Update to use fifo_generator_v13_1_3
+--     - Update to use fifo_generator_v13_2_2
 -------------------------------------------------------------------------------
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 
-library fifo_generator_v13_1_3;
-use fifo_generator_v13_1_3.all;
+library fifo_generator_v13_2_2;
+use fifo_generator_v13_2_2.all;
 
-
+Library xpm;
+use xpm.vcomponents.all;
 -------------------------------------------------------------------------------
 
 entity sync_fifo_fg is
@@ -2072,7 +2224,8 @@ entity sync_fifo_fg is
     C_PRELOAD_LATENCY    :    integer := 1 ;  -- 0 = first word fall through
     C_WRITE_DATA_WIDTH   :    integer := 16;
     C_WRITE_DEPTH        :    integer := 16;
-    C_SYNCHRONIZER_STAGE :    integer := 2    -- Valid values are 0 to 8
+    C_SYNCHRONIZER_STAGE :    integer := 2;    -- Valid values are 0 to 8
+    C_XPM_FIFO           :    integer range 0 to 1 := 0
     );
   port (
     Clk          : in  std_logic;
@@ -2195,9 +2348,69 @@ end function log2;
   
   
   -- Constant Declarations  ----------------------------------------------
+    function GetMemType (inputmemtype : integer) return string is
+    
+      Variable memtype1 : string(1 to 4)  := "auto";
+      Variable memtype2 : string(1 to 5)  := "block";
+      Variable memtype3 : string(1 to 11) := "distributed";
+      Variable memtype4 : string(1 to 5)  := "ultra";
+    begin
+   ----- "auto", "block", "distributed", or "ultra"
+       If (inputmemtype = 0) Then -- distributed Memory 
+ 	      return(memtype1);
+       elsif (inputmemtype = 1) then
+       	     return(memtype2);
+       elsif (inputmemtype = 2)  then
+             return(memtype3);
+       elsif (inputmemtype = 3)  then
+             return(memtype4);
+       else
+             return(memtype1); 
+       End if;
+         
+    end function GetMemType;
+-------------------------------------------------------------------------
+function Get_READ_MODE (PRELOAD_REGS: integer; PRELOAD_LATENCY: integer) return string is
+    
+      Variable READ_MODE_type1 : string(1 to 3) := "std";
+      Variable READ_MODE_type2 : string(1 to 4) := "fwft";
+
+     begin
+
+          if (PRELOAD_REGS = 0) and (PRELOAD_LATENCY = 1) then
+             return(READ_MODE_type1);
+          elsif (PRELOAD_REGS = 1) and (PRELOAD_LATENCY = 0) then
+             return(READ_MODE_type2);
+          else
+             return(READ_MODE_type1);
+          end if;
+   end function Get_READ_MODE;
+
+
+function Getlatency (PRELOAD_REGS: integer; PRELOAD_LATENCY: integer) return integer is
+    
+      variable latency : integer := 1;
+
+     begin
+
+          if (PRELOAD_REGS = 0) and (PRELOAD_LATENCY = 1) then
+             latency := 1;
+          elsif (PRELOAD_REGS = 1) and (PRELOAD_LATENCY = 0) then
+             latency := 0;
+          end if;
+       return latency;
+   end function Getlatency;
+                            
   
 -- changing this to C_FAMILY    
     Constant FAMILY_TO_USE        : string := C_FAMILY;  -- function from family_support.vhd
+    signal Wr_err_i :std_logic;
+    signal Rd_err_i :std_logic;
+    Constant xpm_fifo_or_lib_fifo_sel   : integer := 1 ;
+    constant READ_MODE :string := Get_READ_MODE(C_PRELOAD_REGS, C_PRELOAD_LATENCY);
+    constant FIFO_MEMORY_TYPE :string := GetMemType(C_MEMORY_TYPE);
+    constant RD_LATENCY : integer := Getlatency(C_PRELOAD_REGS, C_PRELOAD_LATENCY); 
+
     
     
 --    Constant FAMILY_NOT_SUPPORTED : boolean := (equalIgnoringCase(FAMILY_TO_USE, "nofamily"));
@@ -2402,13 +2615,95 @@ end function log2;
     signal AXIS_PROG_FULL       : STD_LOGIC;
     signal AXIS_PROG_EMPTY      : STD_LOGIC;
 
+    signal empty_i : std_logic;
 
 begin --(architecture implementation)
 
- 
- 
 
- 
+-----Xpm_fifo instance
+xpm_fifo_instance : if C_XPM_FIFO = 1 generate
+begin
+
+xpm_fifo_sync_inst : xpm_fifo_sync
+  generic map (
+
+    FIFO_MEMORY_TYPE         => FIFO_MEMORY_TYPE,  ----"auto",           --string; "auto", "block", "distributed", or "ultra" ;
+    ECC_MODE                 => "no_ecc",           --string; "no_ecc" or "en_ecc";
+    FIFO_WRITE_DEPTH         => MAX_DEPTH, --C_WRITE_DEPTH,      --2048,             --positive integer
+    WRITE_DATA_WIDTH         => C_WRITE_DATA_WIDTH, --32,               --positive integer
+    WR_DATA_COUNT_WIDTH      => FGEN_CNT_WIDTH, --ADJ_FGEN_CNT_WIDTH,----C_DCOUNT_WIDTH,                 --positive integer
+    PROG_FULL_THRESH         => 10,                 --positive integer
+    FULL_RESET_VALUE         => 1,                  --positive integer; 0 or 1;
+    READ_MODE                => READ_MODE,     --"std",            --string; "std" or "fwft";
+    FIFO_READ_LATENCY        => RD_LATENCY,                  --positive integer;
+    READ_DATA_WIDTH          => C_READ_DATA_WIDTH,  -- 32,               --positive integer
+    RD_DATA_COUNT_WIDTH      => 4 ,                 --positive integer
+    USE_ADV_FEATURES         => "1F1F",
+    PROG_EMPTY_THRESH        => 10,                 --positive integer
+    DOUT_RESET_VALUE         => "0",                --string
+    WAKEUP_TIME              => 0                   --positive integer; 0 or 2;
+  )
+  port map (
+
+    rst              => Sinit,
+    wr_clk           => Clk,
+    wr_en            => Wr_en,
+    wr_ack           => Wr_ack,
+    din              => Din,
+    full             => sig_Full,
+    almost_full      => Almost_full,
+    overflow         => Wr_err_i,
+    rd_en            => Rd_en,
+    dout             => Dout,
+    empty            => Empty_i,
+    almost_empty     => open,
+    data_valid       => Rd_ack,
+    underflow        => Rd_err_i,
+    wr_data_count    => sig_full_fg_datacnt, --sig_prim_fg_datacnt,---Data_count,
+    wr_rst_busy      => open,
+    rd_rst_busy      => open,
+    prog_full        => open,
+    prog_empty       => open,
+    rd_data_count    => open,
+    sleep            => '0',
+    injectsbiterr    => '0',
+    injectdbiterr    => '0',
+    sbiterr          => open,
+    dbiterr          => open
+  );
+
+  Empty <= empty_i;  
+  Full <= sig_full;
+  Wr_err      <= Wr_err_i when (C_HAS_WR_ERR = 1) else '0';
+  Rd_err      <= Rd_err_i when (C_HAS_RD_ERR = 1) else '0';
+
+     
+     Data_count <=  sig_full_fg_datacnt;
+
+STD_MODE : if READ_MODE = "std" generate
+begin
+--process (Clk)
+--begin
+--if (Clk'event and Clk = '1') then
+--   Rd_ack <= Rd_en;
+--end if;
+--end process;
+
+end generate STD_MODE;
+
+FWFT_MODE : if READ_MODE = "fwft" generate
+begin
+
+--Rd_ack <= not Empty_i;
+end generate FWFT_MODE;
+
+
+end generate xpm_fifo_instance;
+
+legacy_fifo_instance : if C_XPM_FIFO = 0 generate
+begin
+
+---lib_fifo_instance : if xpm_fifo_or_lib_fifo_sel = 0 generate
    
   ------------------------------------------------------------
   -- If Generate
@@ -2524,7 +2819,7 @@ begin --(architecture implementation)
     -- BRAM implementations of a legacy Sync FIFO
     --
     -------------------------------------------------------------------------------
-    I_SYNC_FIFO_BRAM : entity fifo_generator_v13_1_3.fifo_generator_v13_1_3 
+    I_SYNC_FIFO_BRAM : entity fifo_generator_v13_2_2.fifo_generator_v13_2_2 
       generic map(
         C_COMMON_CLOCK                 =>  1,                                           
         C_COUNT_TYPE                   =>  0,                                           
@@ -3036,6 +3331,7 @@ begin --(architecture implementation)
         
   end generate FAMILY_SUPPORTED;
 
+end generate legacy_fifo_instance;
 
 
 end implementation;
